@@ -1,0 +1,42 @@
+[
+  {
+    "id": "9a6fdd9efb8e3f6d9ddab7aa",
+    "email": "usuario4@example.com",
+    "password": "26398322",
+    "role": "user",
+    "photo": "",
+    "age": 12
+  },
+  {
+    "id": "b901d9cf4b5a52416d9db03d",
+    "email": "usuario4@example.com",
+    "password": "26398322",
+    "role": "user",
+    "photo": "",
+    "age": 12
+  },
+  {
+    "id": "fe45e19a1091f32d7448e222",
+    "email": "usuario4@example.com",
+    "password": "26398322",
+    "role": "user",
+    "photo": "",
+    "age": 12
+  },
+  {
+    "id": "f0120dd3851906e6f0f1ed5c",
+    "email": "usuario4@example.com",
+    "password": "26398322",
+    "role": "user",
+    "photo": "",
+    "age": 12
+  },
+  {
+    "id": "04f486ca23478b93b970d101",
+    "email": "usuario4@example.com",
+    "password": "26398322",
+    "role": "user",
+    "photo": "",
+    "age": 12
+  }
+]
