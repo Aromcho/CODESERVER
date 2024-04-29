@@ -1,0 +1,45 @@
+
+<h1 class="text-center p-4">Lista de Usuarios</h1>
+<ul class="nav nav-pills nav-fill gap-2 p-1 small bg-primary rounded-5 shadow-sm" id="pillNav2" role="tablist" style="--bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-primary); --bs-nav-pills-link-active-bg: var(--bs-white);">
+  <li class="nav-item" role="presentation">
+    <a href="/users"><button class="nav-link active rounded-5" id="home-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="true">Todos</button></a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a href="/users/?role=admin"><button class="nav-link rounded-5" id="profile-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">admin</button></a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a href="/users/?role=user"><button class="nav-link rounded-5" id="contact-tab2" data-bs-toggle="tab" type="button" role="tab" aria-selected="false">user</button></a>
+  </li>
+</ul>
+
+<div class="container-xl mt-4">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        {{#each users}}
+        <div class="col">
+            <div class="card h-100 bg-dark text-white">
+                <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_640.png" class="card-img-top" alt="foro de {{name}}">
+                <a class="text-decoration-none text-white" href="/users/{{this.id}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{name}}</h5>
+                    <p class="card-text">role: {{role}}</p>
+                    <p class="card-text">email: {{email}}</p>
+                    <p class="card-text">age: {{age}}</p>
+                </div></a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+</div>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const currentRole = new URLSearchParams(window.location.search).get('role') || 'todos';
+
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('active');
+    if (link.textContent.trim().toLowerCase() === currentRole.toLowerCase()) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>

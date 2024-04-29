@@ -5,7 +5,8 @@
     "password": "26398322",
     "role": "user",
     "photo": "",
-    "age": 12
+    "age": 12,
+    "name": "Sofía Martínez"
   },
   {
     "id": "b901d9cf4b5a52416d9db03d",
@@ -13,7 +14,8 @@
     "password": "26398322",
     "role": "user",
     "photo": "",
-    "age": 12
+    "age": 12,
+    "name": "Lucas Hernández"
   },
   {
     "id": "fe45e19a1091f32d7448e222",
@@ -21,7 +23,8 @@
     "password": "26398322",
     "role": "user",
     "photo": "",
-    "age": 12
+    "age": 12,
+    "name": "Emilia López"
   },
   {
     "id": "f0120dd3851906e6f0f1ed5c",
@@ -29,7 +32,8 @@
     "password": "26398322",
     "role": "user",
     "photo": "",
-    "age": 12
+    "age": 12,
+    "name": "Mateo García"
   },
   {
     "id": "04f486ca23478b93b970d101",
@@ -37,6 +41,34 @@
     "password": "26398322",
     "role": "user",
     "photo": "",
-    "age": 12
+    "age": 12,
+    "name": "Valentina Pérez"
+  },
+  {
+    "id": "103434f2ae57bb1237542ad0",
+    "email": "porramiro@gmail.com",
+    "password": "1944ramino",
+    "role": "admin",
+    "photo": "",
+    "age": "27",
+    "name": "Ramiro Porrazo"
+  },
+  {
+    "id": "2909c34f50e1f4b6ffcb1401",
+    "email": "arom@gmail.com",
+    "password": "123456789",
+    "role": 0,
+    "photo": "",
+    "age": 12,
+    "name": "usuario sin nombre"
+  },
+  {
+    "id": "547b261099d4e3e1dfe1735a",
+    "email": "alejofrankgmail.com",
+    "password": "981944567",
+    "role": 0,
+    "photo": "",
+    "age": 12,
+    "name": "usuario sin nombre"
   }
 ]

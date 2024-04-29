@@ -1,0 +1,30 @@
+<div class="container my-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-custom" >
+                    <div class="card-body text-center">
+                        <img src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_640.png" class="img-fluid rounded-circle mb-3" alt="Foto del usuario" style="width: 150px;">
+                        <h3>{{user.name}}</h3>
+                        <p>{{user.email}}</p>
+                        <a href="#" class="btn btn-primary gradient-custom btn-custom">Enviar Mensaje</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header" style="background: linear-gradient(to right, #6a11cb, #2575fc); color: white;">
+                        Detalles del Perfil
+                    </div>
+                    <div class="card-body bg-dark text-white">
+                        <h5 class="card-title">Información del Usuario</h5>
+                        <p class="card-text"><i class="las la-user"></i> Nombre: {{user.name}}</p>
+                        <p class="card-text"><i class="las la-envelope"></i> Email: {{user.email}}</p>
+                        <p class="card-text"><i class="las la-birthday-cake"></i> Edad: {{user.age}}</p>
+                        <p class="card-text"><i class="las la-map-marker"></i> Ubicación: {{user.location}}</p>
+                        <p class="card-text"><i class="las la-phone"></i> Teléfono: {{user.phone}}</p>
+                        <a href="#" class="btn btn-outline-primary">Editar Perfil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -115,19 +115,5 @@ class ProductManager {
 }
 
 const productManager = new ProductManager();
-
-//productManager.create({ title: "remera", photo: "camisa.jpg", category: "Ropa", price: 20, stock: 50 });
-//productManager.create({ title: "Pantalón", photo: "pantalon.jpg", category: "Ropa", price: 30, stock: 40 });
-//productManager.create({ title: "nike huarache", photo: "zapatos.jpg", category: "Calzado", price: 50, stock: 20 });
-//productManager.create({ title: "Bufanda", photo: "bufanda.jpg", category: "Accesorios", price: 15, stock: 60 });
-//productManager.create({ title: "Sombrero", photo: "sombrero.jpg", category: "Accesorios", price: 25, stock: 30 });
-//productManager.create({ title: "Chaqueta de Cuero", photo: "chaqueta.jpg", category: "Ropa", price: 100, stock: 10 });
-//productManager.create({ title: "Vestido Floral", photo: "vestido.jpg", category: "Ropa", price: 50, stock: 15 });
-//productManager.create({ title: "Zapatillas Deportivas", photo: "zapatillas.jpg", category: "Calzado", price: 80, stock: 25 });
-//productManager.create({ title: "medias", photo: "medias.jpg", category: "Accesorios", price: 35, stock: 20 });
-//productManager.create({ title: "Gorra de Bizarrap", photo: "gorra.jpg", category: "Accesorios", price: 20, stock: 40 });
-
-
-
 console.log(productManager.read());
 export default productManager;

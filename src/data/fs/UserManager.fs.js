@@ -30,6 +30,7 @@ class UsersManager {
                 role: data.role || 0,
                 photo: data.photo || "",
                 age: data.age || 12,
+                name: data.name || "usuario sin nombre"
             };
             let all = await fs.promises.readFile(this.path, "utf-8");
             all = JSON.parse(all);
