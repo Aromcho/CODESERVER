@@ -1,0 +1,30 @@
+[
+  {
+    "id": "e526a403-4598-4cdc-a139-c32c92906c3d",
+    "user_id": "",
+    "product_id": "6461ca775d9d5076fa082856",
+    "quantity": 1,
+    "state": "reserved"
+  },
+  {
+    "id": "e7015194-c287-40f2-bd9e-fffd598e721b",
+    "user_id": "",
+    "product_id": "6461ca775d9d5076fa082856",
+    "quantity": 1,
+    "state": "reserved"
+  },
+  {
+    "id": "0ae4383c-a31f-4362-bf39-5f1d7909676b",
+    "user_id": "",
+    "product_id": "6461ca775d9d5076fa082856",
+    "quantity": 1,
+    "state": "reserved"
+  },
+  {
+    "id": "7cfcc274-1bd7-4328-b138-d15aa317882a",
+    "user_id": "",
+    "product_id": "cffe43c93c87426a89fc6cba",
+    "quantity": 1,
+    "state": "reserved"
+  }
+]

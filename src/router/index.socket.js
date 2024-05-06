@@ -7,5 +7,6 @@ export default async (socket) => {
   socket.on("register", async data =>{ 
     await productManager.create(data)
     socket.emit("products", await productManager.read());
-})
+ })
 };
+
