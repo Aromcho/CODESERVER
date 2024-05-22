@@ -70,5 +70,59 @@
     "photo": "",
     "age": 12,
     "name": "usuario sin nombre"
+  },
+  {
+    "id": "ced7860a0569089b05e7515d",
+    "email": "zapiolaramon@gmail.com",
+    "password": "12345678",
+    "role": "user",
+    "photo": "",
+    "age": 12,
+    "name": "ramon zapiola"
+  },
+  {
+    "id": "a17908810930af3aaba5e82b",
+    "email": "aguilarjhonny@gmail.com",
+    "password": "12345678",
+    "role": "admin",
+    "photo": "",
+    "age": 12,
+    "name": "jhonny aguilar"
+  },
+  {
+    "id": "89b82b20a43cc8a583d85f01",
+    "email": "coronelabigail",
+    "password": "12345678",
+    "role": "user",
+    "photo": "",
+    "age": 12,
+    "name": "Abigail Coronel"
+  },
+  {
+    "id": "65220c4d0942e378a141c91b",
+    "email": "coronelabigail@gmail.com",
+    "password": "12345678",
+    "role": "user",
+    "photo": "",
+    "age": 12,
+    "name": "Abigail Coronel"
+  },
+  {
+    "id": "ceca844cac3f4dd17a05cefd",
+    "email": "pucheocta@gmail.com",
+    "password": "12345678",
+    "role": "user",
+    "photo": "",
+    "age": 12,
+    "name": "octabio puchetta"
+  },
+  {
+    "id": "a69867dc9cfc7062dfd112e7",
+    "email": "ruiznicolas@gmail.com",
+    "password": "123567689",
+    "role": "user",
+    "photo": "",
+    "age": 12,
+    "name": "nicolas ruiz"
   }
 ]

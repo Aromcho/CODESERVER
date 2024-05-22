@@ -1,5 +1,5 @@
 import express from "express";
-import cartManager from "../../data/fs/CartManager.fs.js";
+import cartManager from "../../data/mongo/managers/CartManager.mongo.js";
 
 const cartRouter = express.Router();
 

@@ -10,5 +10,5 @@ const schema = new Schema ({
 },{
     timestamps: true
 })
-const Product = model(schema, collection)
+const Product = model( collection, schema)
 export default Product

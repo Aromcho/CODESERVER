@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <img src="https://files.cdn.printful.com/o/upload/bfl-image/42/11354_l_t-shirt-Design-Examples-mockup_Art-with-text.png" class="img-fluid rounded-3 card-custom" alt="{{product.title}}">
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 ">
             <div class="p-4 bg-dark rounded-3">
                 <h1 class="display-5">{{product.title}}</h1>
                 <p class="fst-italic">Categoría: {{product.category}}</p>
@@ -26,15 +26,18 @@
 document.addEventListener('DOMContentLoaded', function () {
     const addToCartBtn = document.getElementById('addToCartBtn');
     const cartContent = document.getElementById('cart-content'); // Elemento para mostrar la cantidad de productos en el carrito
+    
 
     addToCartBtn.addEventListener('click', function () {
+        const userId = "a69867dc9cfc7062dfd112e7"
+        const productTitle = addToCartBtn.dataset.title;
         const productId = addToCartBtn.dataset.productId; // Obtener productId del dataset
         fetch('/add-to-cart/' + productId, { // Enviar la solicitud POST al endpoint correcto
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ product_id: productId })
+            body: JSON.stringify({ product_id: productId, user_id: userId, title: productTitle })
         })
         .then(response => {
             if (response.ok) {

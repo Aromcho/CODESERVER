@@ -12,7 +12,7 @@ cartRouter.get("/", async (req, res) => {
         // Obtiene los datos del carrito
         const cartItem = await cartManager.read();
         // Renderiza la plantilla 'main' y pasa los datos del carrito como contexto
-        res.render("main", { cartItem });
+        res.render("cart", { cartItem });
     } catch (error) {
         // Manejo de errores
         res.status(500).json({ error: error.message });

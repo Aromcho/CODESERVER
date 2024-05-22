@@ -9,5 +9,5 @@ const schema = new Schema ({
 },{
     timestamps: true
 })
-const Cart = model(schema, collection)
+const Cart = model(collection, schema  )
 export default Cart

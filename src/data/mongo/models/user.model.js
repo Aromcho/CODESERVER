@@ -2,7 +2,7 @@ import { Schema, Types, model } from "mongoose";
 
 const collection = "users"
 const schema = new Schema ({
-    email: { type:String, require:true },
+    email: { type:String, require:true, unique: true },
     password: { type:String, require:true },
     role: { type:String, require:true },
     photo: { type:String, require:true },
@@ -12,5 +12,5 @@ const schema = new Schema ({
     timestamps: true
 })
 
-const User = model(schema, collection)
+const User = model( collection, schema)
 export default User
