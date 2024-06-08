@@ -28,8 +28,7 @@ class Manager {
 
         //cat para filtrar por categorias
 
-        const all = await this.Model.find(cat).lean();
-
+        const all = await this.Model.find(cat);
         return all;
 
       } catch (error) {
@@ -38,6 +37,22 @@ class Manager {
 
       }
 
+    }
+    async paginate({filter, opts}){
+      try {
+        const all = await this.Model.paginate(filter, opts);
+        return all;
+      } catch (error) {
+        throw error;
+      }
+    }
+    async aggregate(obj){
+      try {
+        const result = await this.Model.aggregate(obj);
+        return result;
+      } catch (error) {
+        throw error;
+      }
     }
 
     async readOne(id) {
@@ -55,6 +70,24 @@ class Manager {
       }
 
     }
+    
+
+    async readByEmail(email) {
+
+      try {
+
+        const one = await this.Model.findOne({ email });
+
+        return one;
+
+      } catch (error) {
+
+        throw error;
+
+      }
+
+    }
+
 
     async update(id, data) {
 

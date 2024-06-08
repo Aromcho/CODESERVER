@@ -1,4 +1,5 @@
-import { Schema, Types, model } from "mongoose";
+import { Schema, model } from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 const collection = "products"
 const schema = new Schema ({
@@ -10,5 +11,11 @@ const schema = new Schema ({
 },{
     timestamps: true
 })
-const Product = model( collection, schema)
+
+// Aplicamos el plugin de paginación al esquema
+schema.plugin(mongoosePaginate)
+
+// Creamos el modelo de producto con el esquema definido
+const Product = model(collection, schema)
+
 export default Product

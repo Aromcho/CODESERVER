@@ -1,0 +1,30 @@
+.hero {
+    background-image: url('https://cdn.pixabay.com/photo/2017/08/01/00/38/man-2562325_960_720.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 100vh;
+
+  }
+  .overlay {
+    
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+  }
+  .bg-dark {
+    background-color: #343a40 !important;
+  }
+  .gradient-custom {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  }
+  .card-custom {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .btn-custom {
+    border: none;
+    transition: transform 0.3s ease;
+  }
+  .btn-custom:hover {
+    transform: translateY(-3px);
+  }

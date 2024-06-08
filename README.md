@@ -48,4 +48,21 @@ desarrolle un frontend con boostrap y implemente un filtrado por categorias colo
 
 tambien integre formulario con los imputs para subir los productos (todavia con es funcional)
 
- 
+## funcionalidades 
+
+- Servidor Express.js
+- Conexión a base de datos
+- Rutas API
+- Middleware de manejo de errores
+- Servidor de Socket.io
+- Servicio de archivos estáticos
+- Frontend React
+- Funcionalidad de carrito de compras
+- Funcionalidad de tickets
+
+## Capturas de Pantalla
+
+Aquí puedes agregar capturas de pantalla del frontend para mostrar el avance visual del proyecto.
+
+![Captura de Pantalla 1](ruta/a/la/imagen1.png)
+![Captura de Pantalla 2](ruta/a/la/imagen2.png)
