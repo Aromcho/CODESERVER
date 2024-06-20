@@ -8,6 +8,7 @@ cartsRouter.get("/:nid", readOne);
 cartsRouter.post("/", create);
 cartsRouter.put("/:nid", update);
 cartsRouter.delete("/:nid", destroy);
+cartsRouter.delete("/all/:nid", destroyAll);
 
 
 async function create(req, res, next) {
@@ -44,6 +45,11 @@ async function read(req, res, next) {
 async function readOne(req, res, next) {
   try {
     const { nid } = req.params;
+    if (!nid) {
+      const error = new Error("NID is required");
+      error.statusCode = 400;
+      throw error;
+    }
     const one = await cartsManager.readOne(nid);
     if (one) {
       return res.json({
@@ -86,5 +92,29 @@ async function destroy(req, res, next) {
     return next(error);
   }
 }
+// metodo destroyAll para eliminar todos los productos del carrito
+async function destroyAll(req, res, next) {
+  try {
+    const { nid } = req.query;
+    const all = await cartsManager.read({ nid });
+    if (all.length > 0) {
+      all.forEach(async (item) => {
+        await cartsManager.destroy(item._id);
+      });
+      return res.json({
+        statusCode: 200,
+        response: "All items deleted",
+      });
+    } else {
+      const error = new Error("Not found!");
+      error.statusCode = 404;
+      throw error;
+    }
+  } catch (error) {
+    return next(error);
+  }
+}
+
+ 
 
 export default cartsRouter;

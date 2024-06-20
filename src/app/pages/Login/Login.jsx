@@ -20,14 +20,17 @@ const Login = () => {
   
     try {
       const response = await axios.post('/api/sessions/login', user);
-      Swal.fire(
-        '¡Bienvenido!',
-        'Has iniciado sesión con éxito.',
-        'success'
-      ).then(() => {
-        window.location.replace('/');        // Redirige al usuario a la página principal
-        console.log(response);
-      });
+      
+      const statusResponse = await axios.get('/api/sessions/online');
+      if (statusResponse.data.role === 'admin') {
+        // Si el usuario es admin, redirigir a /admin
+        window.location.replace('/admin');
+      } else {
+        // Si no es admin, redirigir a la página principal
+        window.location.replace('/');
+      }
+      console.log(response);
+      
 
     } catch (error) {
       console.error(error);

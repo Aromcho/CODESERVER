@@ -13,13 +13,15 @@ import Swal from 'sweetalert2';
 
 const NavBar = () => {
   const [isOnline, setIsOnline] = useState(false);
-  const { cartItems } = useContext(CartContext);
+
+  const { cartItems, isAdmin } = useContext(CartContext);
 
   useEffect(() => {
     const checkOnlineStatus = async () => {
       try {
         const response = await axios.get("/api/sessions/online");
         setIsOnline(response.status === 200);
+       
       } catch (error) {
         setIsOnline(false);
       }
@@ -55,6 +57,28 @@ const NavBar = () => {
       console.error('Error al cerrar la sesión', error);
     }
   };
+  const renderAuthButtons = () => {
+    if (isOnline) {
+      return (
+        <>
+          {isAdmin ? (
+            <h5 className='text-white m-1'>Hola Administrador</h5>
+          ) : (
+            <Cart cartItems={cartItems} />
+          )}
+          <Button className="ms-1" as={Link} to="/" onClick={logout} variant="dark">
+            Cerrar sesión
+          </Button>
+        </>
+      );
+    } else {
+      return (
+        <Button className="ms-1" as={Link} to="/user/login" variant="dark">
+          Iniciar sesión
+        </Button>
+      );
+    }
+  };
 
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -71,25 +95,14 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/user">
               Users
             </Nav.Link>
-
             <Nav.Link as={Link} to="/user/register">
               Registrarse
             </Nav.Link>
+            <Nav.Link as={Link} to="/admin/Orders">
+              Pedidos
+            </Nav.Link>
           </Nav>
-          
-          {isOnline ? (
-            <>
-            <Cart cartItems={cartItems} />
-            <Button className="ms-1" as={Link} to="/" onClick={logout} variant="dark">
-            Cerrar sesión
-          </Button>
-            </>
-            
-          ) : (
-            <Button className="ms-1" as={Link} to="/user/login" variant="dark">
-              Iniciar sesión
-            </Button>
-          )}
+          {renderAuthButtons()}
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -3,12 +3,13 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 
-const Item = ({ product, addToCart }) => (
-  <Card className="h-100 bg-dark text-white">
+const Item = ({ product, addToCart }) => {
+  const quantity = 1;
+  return ( <Card className="h-100 bg-dark text-white">
     <div className="card-image-wrapper">
       <Button
         onClick={() => {
-          addToCart(product);
+          addToCart(product, quantity);
         }}
         className="add-to-cart-button "
       >
@@ -32,7 +33,8 @@ const Item = ({ product, addToCart }) => (
     <Link to={`/products/${product._id}`} className="btn btn-primary mt-2">
       Ver detalles
     </Link>
-  </Card>
-);
+  </Card>)
+  
+      };
 
 export default Item;

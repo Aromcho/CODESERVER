@@ -5,7 +5,7 @@ import "./Register.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const Register = (props) => { // Añade props como argumento
+const Register = () => { // Añade props como argumento
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
@@ -24,26 +24,25 @@ const Register = (props) => { // Añade props como argumento
       age,
       name,
     };
-
+    // crear el usuario
+    
     try {
       const response = await axios.post("/api/sessions/register", user);
-      Swal.fire(
-        "¡Buen trabajo!",
-        "Usuario registrado con éxito",
-        "success"
-      ).then(() => {
-        props.history.push('/login');
-      });
+      if (response.status === 200) {
+        Swal.fire("¡Registrado!", "Has creado tu cuenta con éxito.", "success").then(() => {
+          window.location.replace('/');
+        });
+      }
     } catch (error) {
-      console.error(error);
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Ha ocurrido un error al intentar registrarse.",
-      });
+      if (error.response && error.response.status === 400) {
+        Swal.fire("¡Error!", "El email ya está en uso.", "error");
+      } else {
+        // Manejo de otros errores o códigos de estado no esperados
+        Swal.fire("¡Error!", "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.", "error");
+      }
     }
-    props.history.push("/user/login");
   };
+
 
   return (
     <Container className="my-2 text-white">

@@ -1,3 +1,4 @@
+
 class Manager {
 
     constructor(Model) {
@@ -87,6 +88,7 @@ class Manager {
       }
 
     }
+    
 
 
     async update(id, data) {
@@ -120,7 +122,7 @@ class Manager {
       }
 
     }
-
+    // tickets
   }
 
   
