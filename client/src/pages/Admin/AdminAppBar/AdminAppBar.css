@@ -1,0 +1,17 @@
+.search-input {
+    width: 250px; /* Ajusta según necesidad */
+  }
+  
+  .search-button, .notification-button, .dropdown-toggle {
+    margin-left: 8px;
+  }
+  
+  .notification-button .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+  }
+  
+  .user-dropdown .dropdown-toggle::after {
+    display: none; /* Oculta el indicador de dropdown predeterminado */
+  }

@@ -1,0 +1,25 @@
+/* Register.css */
+.card-custom {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+  }
+  
+  .card-custom:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .bg-dark-custom {
+    background-color: #333;
+    border-radius: 15px;
+    padding: 20px;
+  }
+  
+  .btn-custom {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    border: none;
+    color: white;
+  }
+  
+  .text-white-custom {
+    color: white;
+  }

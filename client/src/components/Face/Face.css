@@ -1,0 +1,75 @@
+.hero {
+    background-image: url('https://tustablas.com/img/cms/%C3%BAltimas-tendencias-en-sudaderas-de-skate-blog-skate-spain-sep-02.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 70vh;
+
+  }
+  .overlay {
+    
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+  }
+  .bg-dark {
+    background-color: #343a40 !important;
+  }
+  .gradient-custom {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+  }
+  .card-custom {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .btn-custom {
+    border: none;
+    transition: transform 0.3s ease;
+  }
+  .btn-custom:hover {
+    transform: translateY(-3px);
+  }
+  /* Estilos para Productos Populares */
+.popular-products-section .section-title {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Estilos para la Sección de Suscripción */
+.subscription-section {
+  background-image: url('https://example.com/background-image.jpg'); /* Reemplaza con tu imagen */
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+
+.subscription-content {
+  background: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente para mejorar la legibilidad */
+  padding: 40px;
+  border-radius: 8px;
+}
+
+.subscription-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.subscription-form input {
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 250px;
+}
+
+.subscription-form button {
+  cursor: pointer;
+}
+
+/* Añade transiciones suaves a los botones */
+button {
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Oscurece el botón ligeramente al pasar el mouse */
+}

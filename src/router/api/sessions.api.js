@@ -1,33 +1,35 @@
 import { Router } from "express";
 import usersManager from "../../data/mongo/managers/UserManager.mongo.js";
 import isValidEmail from "../../middlewares/isValidEmail.mid.js";
-
+import isValidData from "../../middlewares/isValidData.mid.js";
+import isValidUser from "../../middlewares/isValidUser.mid.js";
+import isValidPassword from "../../middlewares/isValidPassword.mid.js";
+import createHashPassword from "../../middlewares/createHashPassword.mid.js";
+import passport from "../../middlewares/passport.mid.js";
+import { token } from "morgan";
 
 const sessionsRouter = Router();
 
-sessionsRouter.post("/register", isValidEmail , async (req, res, next) => {
+sessionsRouter.post("/register", passport.authenticate("register", { session: false }) , async (req, res, next) => {
   try {
-    const data = req.body;
-    await usersManager.create(data);
     return res.json({ statusCode:  201 ,message: "Registered!" });
   } catch (error) {
     return next(error);
   }
 })
 
-sessionsRouter.post("/login", async (req, res, next) => {
+sessionsRouter.post("/login", passport.authenticate("login", { session: false }), async (req, res, next) => {
   try {
-    const { email, password } = req.body;
-    const one = await usersManager.readByEmail(email);
-    if (one.password === password) {
-      req.session.email = email;
-      req.session.online = true;
-      req.session.role = one.role;
-      req.session.user_id = one._id;
-      console.log("Usted esta logeado");
-      return res.status(200).json({ message: "Logged in!" });
+    const userRole = req.user.role;
+
+    if (userRole === 'admin') {
+      return res.json({ statusCode: 200, message: "Logged in!",token: req.user.token , redirectUrl: "/admin" });
+    } else if (userRole === 'user') {
+      return res.json({ statusCode: 200, message: "Logged in!",token: req.user.token , redirectUrl: "/" });
+    } else {
+      // Manejar otros roles o casos inesperados
+      return res.json({ statusCode: 200, message: "Logged in!",token: req.user.token , redirectUrl: "/" });
     }
-    return res.status(401).json({ message: "Bad auth!" });
   } catch (error) {
     return next(error);
   }
@@ -58,6 +60,15 @@ sessionsRouter.post("/signout", (req, res, next) => {
   } catch (error) {
     return next(error);
   }
+});
+sessionsRouter.get("/google", passport.authenticate("google", { scope: ["email", "profile"] }));
+sessionsRouter.get("/google/callback", passport.authenticate("google", { session: false}), (req, res, next) => {
+  try {
+    return res.json({ statusCode: 200, message: "Logged in!", redirectUrl: "/" });
+  } catch (error) {
+    
+  }
+  //res.redirect("/");
 });
 
 export default sessionsRouter;

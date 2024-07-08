@@ -1,19 +1,17 @@
-// middleware para comprovar si el email es valido
-import usersManager from "../data/mongo/managers/UserManager.mongo.js";
+// middleware para comprovar si el email existe
+import User from "../data/mongo/models/user.model.js";
 
-async function isValidEmail(req, res, next) {
+ const isValidEmail = async (req, res, next) => {
+    const { email } = req.body;
     try {
-        const { email } = req.body;
-        const one = await usersManager.readByEmail(email);
-        if (one) {
-            const error = new Error("bad outh from register!");
-            error.statusCode = 401;
-            throw error;
+        const userExist = await User.findOne({ email: email });
+        if (userExist) {
+            return res.status(400).json({ message: "Email already exists" });
         }
-        return next()
+        next();
     } catch (error) {
-        return next(error);
+        next(error);
+        res.status(500).send({ error: 'Error al comprobar el email.' });
+      }
     }
-}
 export default isValidEmail;
-

@@ -1,0 +1,5 @@
+.card-shadow { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.img-rounded { border-radius: 5px; }
+.card-title-bold { font-size: 1.25rem; font-weight: bold; }
+.card-text { font-size: 1rem; }
+.price-text { font-size: 1rem; color: #007bff; }
