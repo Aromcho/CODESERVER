@@ -1,12 +1,13 @@
-import { Router } from "express";
+import CustomRouter from "../CustomRouter.js";
 import passport from "../../middlewares/passport.mid.js";
-import isAuth from "../../middlewares/isAuth.mid.js";
-import { signedCookie } from "cookie-parser";
 import passportCb from "../../middlewares/passportCb.mid.js";
 
-const sessionsRouter = Router();
+class SessionsRouter extends CustomRouter {
+  init() {
+   
+  
 
-sessionsRouter.post("/register", passportCb("register"), async (req, res, next) => {
+this.create("/register", passportCb("register"), async (req, res, next) => {
   try {
     return res.json({ statusCode: 201, message: "Registered!" });
   } catch (error) {
@@ -14,7 +15,7 @@ sessionsRouter.post("/register", passportCb("register"), async (req, res, next) 
   }
 });
 
-sessionsRouter.post("/login", passportCb("login"), async (req, res, next) => {
+this.create("/login", passportCb("login"), async (req, res, next) => {
   try {
     const userRole = req.user.role;
     const token = req.user.token;
@@ -33,7 +34,7 @@ sessionsRouter.post("/login", passportCb("login"), async (req, res, next) => {
   }
 });
 
-sessionsRouter.get("/online", passportCb("jwt"), async (req, res, next) => {
+this.read("/online", passportCb("jwt"), async (req, res, next) => {
   try {
     if (req.user) {
       return res.json({
@@ -52,7 +53,7 @@ sessionsRouter.get("/online", passportCb("jwt"), async (req, res, next) => {
   }
 });
 
-sessionsRouter.post("/signout", (req, res, next) => {
+this.create("/signout", (req, res, next) => {
   try {
     res.clearCookie('jwt');
     return res.status(200).json({ message: "Signed out!" });
@@ -61,9 +62,9 @@ sessionsRouter.post("/signout", (req, res, next) => {
   }
 });
 
-sessionsRouter.get("/google", passport.authenticate("google", { scope: ["email", "profile"] }));
+this.read("/google", passport.authenticate("google", { scope: ["email", "profile"] }));
 
-sessionsRouter.get("/google/callback", passport.authenticate("google", { session: false }), (req, res, next) => {
+this.read("/google/callback", passport.authenticate("google", { session: false }), (req, res, next) => {
   try {
     const token = req.user.token;
     return res
@@ -74,4 +75,10 @@ sessionsRouter.get("/google/callback", passport.authenticate("google", { session
   }
 });
 
-export default sessionsRouter;
+}
+}
+
+const sessionsRouter = new SessionsRouter();
+
+
+export default sessionsRouter.getRouter();

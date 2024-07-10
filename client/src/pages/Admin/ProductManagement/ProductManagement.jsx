@@ -17,13 +17,11 @@ const ProductManagement = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        let url = `/api/product`; // Ajusta según sea necesario
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+        const response = await axios.get('/api/product');
+        if (!response.data || response.data.statusCode !== 200) {
+          throw new Error('Failed to fetch products');
         }
-        const data = await response.json();
-        setProductos(data); // Asegúrate de ajustar según la estructura de tu respuesta
+        setProductos(response.data.response); // Asegúrate de ajustar según la estructura de tu respuesta
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -42,22 +40,7 @@ const ProductManagement = () => {
     try {
       const response = await axios.post('/api/product', newProduct);
       console.log('Product uploaded:', response.data);
-      // Actualizar la lista de productos después de la carga exitosa
-      const fetchProducts = async () => {
-        try {
-          let url = `/api/product`; // Ajusta según sea necesario
-          const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          const data = await response.json();
-          setProductos(data); // Asegúrate de ajustar según la estructura de tu respuesta
-        } catch (error) {
-          console.error("Error fetching products:", error);
-        }
-      };
-      fetchProducts();
-      // Limpiar el formulario después de la carga exitosa
+      fetchProducts(); // Actualizar la lista de productos después de la carga exitosa
       setNewProduct({
         title: '',
         photo: '',
