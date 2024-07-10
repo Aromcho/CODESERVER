@@ -76,7 +76,7 @@ passport.use("google", new GoogleStrategy({
 }));
 
 passport.use("jwt", new JWTStrategy({
-  jwtFromRequest: ExtractJwt.fromExtractors([(req) => req?.cookies["jwt"]]),
+  jwtFromRequest: ExtractJwt.fromExtractors([(req) => req?.signedCookies["jwt"]]),
   secretOrKey: process.env.SECRET_JWT,
 }, (data, done) => {
   try {
@@ -91,5 +91,6 @@ passport.use("jwt", new JWTStrategy({
     return done(error);
   }
 }));
+
 
 export default passport;
