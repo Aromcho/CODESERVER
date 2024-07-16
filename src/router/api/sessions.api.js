@@ -1,51 +1,51 @@
-import { Router } from "express";
-import usersManager from "../../data/mongo/managers/UserManager.mongo.js";
-import isValidEmail from "../../middlewares/isValidEmail.mid.js";
-import isValidData from "../../middlewares/isValidData.mid.js";
-import isValidUser from "../../middlewares/isValidUser.mid.js";
-import isValidPassword from "../../middlewares/isValidPassword.mid.js";
-import createHashPassword from "../../middlewares/createHashPassword.mid.js";
+import CustomRouter from "../CustomRouter.js";
 import passport from "../../middlewares/passport.mid.js";
-import { token } from "morgan";
+import passportCb from "../../middlewares/passportCb.mid.js";
 
-const sessionsRouter = Router();
+class SessionsRouter extends CustomRouter {
+  init() {
+   
+  
 
-sessionsRouter.post("/register", passport.authenticate("register", { session: false }) , async (req, res, next) => {
+this.create("/register", passportCb("register"), async (req, res, next) => {
   try {
-    return res.json({ statusCode:  201 ,message: "Registered!" });
+    return res.json({ statusCode: 201, message: "Registered!" });
   } catch (error) {
     return next(error);
   }
-})
+});
 
-sessionsRouter.post("/login", passport.authenticate("login", { session: false }), async (req, res, next) => {
+this.create("/login", passportCb("login"), async (req, res, next) => {
   try {
     const userRole = req.user.role;
+    const token = req.user.token;
 
     if (userRole === 'admin') {
-      return res.json({ statusCode: 200, message: "Logged in!",token: req.user.token , redirectUrl: "/admin" });
-    } else if (userRole === 'user') {
-      return res.json({ statusCode: 200, message: "Logged in!",token: req.user.token , redirectUrl: "/" });
+      return res
+        .cookie('jwt', token, { httpOnly: true, signed: true })
+        .json({ statusCode: 200, message: "Logged in!", redirectUrl: "/admin" });
     } else {
-      // Manejar otros roles o casos inesperados
-      return res.json({ statusCode: 200, message: "Logged in!",token: req.user.token , redirectUrl: "/" });
+      return res
+        .cookie('jwt', token, { httpOnly: true, signed: true })
+        .json({ statusCode: 200, message: "Logged in!", redirectUrl: "/" });
     }
   } catch (error) {
     return next(error);
   }
 });
 
-sessionsRouter.get("/online", async (req, res, next) => {
+this.read("/online", passportCb("jwt"), async (req, res, next) => {
   try {
-    if (req.session.online) {
-      return res.status(200).json({
+    if (req.user) {
+      return res.json({
+        statusCode: 200,
         message: "Is online!",
-        user_id: req.session.user_id,
-        role: req.session.role,
-        online: true,
+        user_id: req.user.user_id,
+        role: req.user.role,
       });
     }
-    return res.status(401).json({
+    return res.json({
+      statusCode: 401,
       message: "Bad auth!",
     });
   } catch (error) {
@@ -53,22 +53,32 @@ sessionsRouter.get("/online", async (req, res, next) => {
   }
 });
 
-sessionsRouter.post("/signout", (req, res, next) => {
+this.create("/signout", (req, res, next) => {
   try {
-    req.session.destroy();
+    res.clearCookie('jwt');
     return res.status(200).json({ message: "Signed out!" });
   } catch (error) {
     return next(error);
   }
 });
-sessionsRouter.get("/google", passport.authenticate("google", { scope: ["email", "profile"] }));
-sessionsRouter.get("/google/callback", passport.authenticate("google", { session: false}), (req, res, next) => {
+
+this.read("/google", passport.authenticate("google", { scope: ["email", "profile"] }));
+
+this.read("/google/callback", passport.authenticate("google", { session: false }), (req, res, next) => {
   try {
-    return res.json({ statusCode: 200, message: "Logged in!", redirectUrl: "/" });
+    const token = req.user.token;
+    return res
+      .cookie('jwt', token, { httpOnly: true, signed: true })
+      .json({ statusCode: 200, message: "Logged in!", redirectUrl: "/" });
   } catch (error) {
-    
+    next(error);
   }
-  //res.redirect("/");
 });
 
-export default sessionsRouter;
+}
+}
+
+const sessionsRouter = new SessionsRouter();
+
+
+export default sessionsRouter.getRouter();

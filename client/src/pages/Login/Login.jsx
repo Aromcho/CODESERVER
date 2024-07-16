@@ -6,6 +6,20 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { GoogleLogin } from 'react-google-login';
 
+// Configurar interceptor de Axios para agregar el token en las solicitudes
+axios.interceptors.request.use(
+  (config) => {
+    const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token='));
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token.split('=')[1]}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,15 +34,14 @@ const Login = () => {
 
     try {
       const response = await axios.post('/api/sessions/login', user);
-
-      const statusResponse = await axios.get('/api/sessions/online');
-      if (statusResponse.data.role === 'admin') {
-        window.location.replace('/admin');
-      } else {
-        window.location.replace('/');
+      if (response.data.statusCode === 200) {
+        const statusResponse = await axios.get('/api/sessions/online');
+        if (statusResponse.data.role === 'admin') {
+          window.location.replace('/admin');
+        } else {
+          window.location.replace('/');
+        }
       }
-      console.log(response);
-
     } catch (error) {
       console.error(error);
 
@@ -87,12 +100,22 @@ const Login = () => {
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label className="text-white">Email</Form.Label>
-                  <Form.Control type="email" placeholder="Introduce tu email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <Form.Control
+                    type="email"
+                    placeholder="Introduce tu email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   <Form.Label className="text-white">Contraseña</Form.Label>
-                  <Form.Control type="password" placeholder="Contraseña" value={password} onChange={(e) => setPassword(e.target.value)} />
+                  <Form.Control
+                    type="password"
+                    placeholder="Contraseña"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </Form.Group>
 
                 <Button variant="primary" type="submit" className="w-100 btn-custom">
