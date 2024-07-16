@@ -39,11 +39,9 @@ function ItemDetailContainer() {
 
   return (
     <Container className="item-detail-container">
-      <Row>
-        <Col>
+      
           <ItemDetail product={product} addToCart={addToCart}/>
-        </Col>
-      </Row>
+        
     </Container>
   );
 }

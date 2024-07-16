@@ -8,15 +8,16 @@ const Item = ({ product, addToCart }) => {
   return ( <Card className="h-100 text-black shadow">
     <div className="card-image-wrapper">
       <Button
+      size="md"
         onClick={() => {
           addToCart(product, quantity);
         }}
         className="add-to-cart-button btn-dark"
       >
-        +
+        <i className="bi bi-cart-plus"></i>
       </Button>
       <Card.Img
-        src="https://files.cdn.printful.com/o/upload/bfl-image/42/11354_l_t-shirt-Design-Examples-mockup_Art-with-text.png"
+        src={product.photo}
         alt={product.title}
       />
     </div>
@@ -26,13 +27,11 @@ const Item = ({ product, addToCart }) => {
     >
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
-        <Card.Text>Categoría: {product.category}</Card.Text>
+        <Card.Text> {product.category}</Card.Text>
         <Card.Text>Precio: ${product.price}</Card.Text>
       </Card.Body>
     </Link>
-    <Link to={`/products/${product._id}`} className="btn btn-dark mt-2  ">
-      Ver detalles
-    </Link>
+    
   </Card>)
   
       };

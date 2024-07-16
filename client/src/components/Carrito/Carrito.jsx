@@ -27,7 +27,7 @@ const Cart = () => {
 
   return (
     <>
-      <Button variant="dark" onClick={handleShow} className="me-2">
+      <Button variant="dark" onClick={handleShow} className="me-2 mx-1">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -40,7 +40,7 @@ const Cart = () => {
         </svg>
       </Button>
       <Offcanvas
-        className="bg-dark text-white"
+        className="custom-navbar text-white"
         show={show}
         onHide={handleClose}
         placement="end"

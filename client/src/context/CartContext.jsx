@@ -1,6 +1,6 @@
-import React, { createContext, useEffect, useState } from "react";
-import axios from "axios";
-import Swal from "sweetalert2";
+import React, { createContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const CartContext = createContext();
 
@@ -19,11 +19,11 @@ const CartProvider = ({ children }) => {
           setIsAdmin(false);
         }
       } catch (error) {
-        console.error("Error al verificar el estado del usuario", error);
-        setIsAdmin(false); // En caso de error, asumir que el usuario no es administrador
+        console.error('Error al verificar el estado del usuario', error);
+        setIsAdmin(false);
       }
     };
-  
+
     checkIfAdmin();
     fetchCartItems();
     getTotalPrice();
@@ -31,72 +31,72 @@ const CartProvider = ({ children }) => {
 
   const fetchCartItems = async () => {
     try {
-      const userResponse = await axios.get("/api/sessions/online");
+      const userResponse = await axios.get('/api/sessions/online');
       const userId = userResponse.data.user_id;
       const cartResponse = await axios.get(`/api/cart?user_id=${userId}`);
-      const cartItems = cartResponse.data.response;
-      setCartItems(cartItems);
+      setCartItems(cartResponse.data.response);
     } catch (error) {
-      console.error("Error al obtener los productos del carrito", error);
+      console.error('Error al obtener los productos del carrito', error);
     }
   };
 
   const addToCart = async (product, quantity) => {
     try {
-      const userResponse = await axios.get("/api/sessions/online");
+      const userResponse = await axios.get('/api/sessions/online');
       if (userResponse.status !== 200) {
-        throw new Error("No se pudo verificar el estado del usuario.");
+        throw new Error('No se pudo verificar el estado del usuario.');
       }
       const userId = userResponse.data.user_id;
-      const response = await axios.post(`/api/cart/`, {
+      const response = await axios.post('/api/cart/', {
         product_id: product._id,
         user_id: userId,
-        quantity: quantity,
+        quantity,
       });
       if (response.status === 200) {
-        setCartItems(prevItems => [
-          ...(Array.isArray(prevItems) ? prevItems : []),
-          ...Array(quantity).fill({
-            _id: response.data._id, // Asegúrate de que la respuesta del servidor incluye el id del carrito
-            product_id: product,
-            quantity: quantity,
-          }),
-        ]);
+        setCartItems((prevItems) => {
+          if (!Array.isArray(prevItems)) {
+            prevItems = [];
+          }
+          return [
+            ...prevItems,
+            {
+              _id: response.data._id,
+              product_id: product,
+              quantity,
+            },
+          ];
+        });
         Swal.fire({
-          icon: "success",
-          title: "¡Producto añadido al carrito!",
+          icon: 'success',
+          title: '¡Producto añadido al carrito!',
           text: `${product.title} se ha añadido a tu carrito.`,
-          confirmButtonText: "OK",
+          confirmButtonText: 'OK',
         });
       } else {
-        throw new Error("No se pudo añadir el producto al carrito.");
+        throw new Error('No se pudo añadir el producto al carrito.');
       }
     } catch (error) {
-      console.error("Error al agregar el producto al carrito", error);
+      console.error('Error al agregar el producto al carrito', error);
       Swal.fire({
-        icon: "error",
-        title: "Error al añadir al carrito",
-        text: "No se pudo añadir el producto al carrito. Por favor, inténtalo de nuevo.",
+        icon: 'error',
+        title: 'Error al añadir al carrito',
+        text: 'No se pudo añadir el producto al carrito. Por favor, inténtalo de nuevo.',
       });
     }
   };
 
   const cantidadTotal = () => {
-    const cantidad = cartItems.reduce(
-      (total, producto) => total + producto.cantidad,
-      0
-    );
-    return cantidad;
+    return cartItems.reduce((total, producto) => total + producto.cantidad, 0);
   };
 
   const getTotalPrice = async () => {
     try {
-      const userResponse = await axios.get("/api/sessions/online");
-      const userId = userResponse.data.user_id;      
+      const userResponse = await axios.get('/api/sessions/online');
+      const userId = userResponse.data.user_id;
       const response = await axios.get(`/api/tickets/${userId}`);
-      setTotal(response.data.response[0].total); 
+      setTotal(response.data.response[0].total);
     } catch (error) {
-      console.error("Error al obtener el precio total del carrito", error);
+      console.error('Error al obtener el precio total del carrito', error);
     }
   };
 
@@ -104,40 +104,32 @@ const CartProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/cart/${idProducto}`);
       if (response.status === 200) {
-        const productosFiltrados = cartItems.filter(
-          (producto) => producto._id !== idProducto
-        );
-        setCartItems(productosFiltrados);
+        setCartItems((prevItems) => {
+          if (!Array.isArray(prevItems)) {
+            prevItems = [];
+          }
+          return prevItems.filter((producto) => producto._id !== idProducto);
+        });
       } else {
-        console.error("Error al eliminar el producto del carrito");
+        console.error('Error al eliminar el producto del carrito');
       }
     } catch (error) {
-      console.error("Error al eliminar el producto del carrito", error);
+      console.error('Error al eliminar el producto del carrito', error);
     }
   };
 
   const borrarTodo = async () => {
     try {
-      const userResponse = await axios.get("/api/sessions/online");
+      const userResponse = await axios.get('/api/sessions/online');
       const userId = userResponse.data.user_id;
       const response = await axios.delete(`/api/cart/all/${userId}`);
       if (response.status === 200) {
         setCartItems([]);
       } else {
-        console.error("Error al eliminar los productos del carrito");
+        console.error('Error al eliminar los productos del carrito');
       }
     } catch (error) {
-      console.error("Error al eliminar los productos del carrito", error);
-    }
-  };
-
-  // Función especial para administradores
-  const adminAction = () => {
-    if (isAdmin) {
-      console.log("Acción especial del administrador");
-      // Aquí puedes poner cualquier lógica o función especial para los administradores
-    } else {
-      console.log("Acceso denegado. Solo los administradores pueden realizar esta acción.");
+      console.error('Error al eliminar los productos del carrito', error);
     }
   };
 
@@ -153,7 +145,6 @@ const CartProvider = ({ children }) => {
         getTotalPrice,
         borrarProducto,
         fetchCartItems,
-        adminAction, // Exponer la acción especial del administrador
       }}
     >
       {children}
