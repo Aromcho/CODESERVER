@@ -17,7 +17,7 @@ const Item = ({ product, addToCart }) => {
         <i className="bi bi-cart-plus"></i>
       </Button>
       <Card.Img
-        src="https://files.cdn.printful.com/o/upload/bfl-image/42/11354_l_t-shirt-Design-Examples-mockup_Art-with-text.png"
+        src={product.photo}
         alt={product.title}
       />
     </div>

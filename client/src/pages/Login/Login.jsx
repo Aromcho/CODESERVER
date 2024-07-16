@@ -47,26 +47,26 @@ const Login = () => {
     }
   };
 
-  const responseGoogle = async (response) => {
-    const { tokenId } = response;
-    console.log(tokenId);
-    try {
-      const res = await axios.get('/api/sessions/google', { params: { tokenId } });
-      const statusResponse = await axios.get('/api/sessions/online');
-      if (statusResponse.data.role === 'admin') {
-        window.location.replace('/admin');
-      } else {
-        window.location.replace('/');
-      }
-    } catch (error) {
-      console.error(error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Ha ocurrido un error al intentar iniciar sesión con Google.',
-      });
-    }
-  };
+  //const responseGoogle = async (response) => {
+  //  const { tokenId } = response;
+ //   console.log(tokenId);
+  //  try {
+  //    const res = await axios.get('/api/sessions/google', { params: { tokenId } });
+  //    const statusResponse = await axios.get('/api/sessions/online');
+  //    if (statusResponse.data.role === 'admin') {
+  //      window.location.replace('/admin');
+  //    } else {
+  //      window.location.replace('/');
+  //    }
+  //  } catch (error) {
+  //    console.error(error);
+  //    Swal.fire({
+  //      icon: 'error',
+  //      title: 'Oops...',
+  //      text: 'Ha ocurrido un error al intentar iniciar sesión con Google.',
+  //    });
+  //  }
+  //};
 
   return (
     <Container className="my-5 text-white">
@@ -75,15 +75,6 @@ const Login = () => {
           <Card className="mt-4 card-custom">
             <Card.Body className="bg-dark-custom">
               <Card.Title className="mb-4 text-white">Iniciar sesión</Card.Title>
-              <GoogleLogin
-                clientId="988198119199-cv4n71shuifrgu9i9s1cf22338497kbf.apps.googleusercontent.com"
-                buttonText="Iniciar sesión con Google"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
-                className="w-100 btn-google mb-3"
-              />
-
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label className="text-white">Email</Form.Label>
