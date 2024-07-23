@@ -104,14 +104,16 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
-
+                
                 <Button variant="primary" type="submit" className="w-100 btn-custom">
                   Iniciar sesión
                 </Button>
               </Form>
               <Card.Text className="text-center mt-3 text-white-custom">
-                <Link to="/user/register">¿No tienes una cuenta? Regístrate</Link>
-              </Card.Text>
+  <Link to="/user/register">¿No tienes una cuenta? Regístrate</Link>
+  <br />
+  <Link to="/user/forgot-password">¿Olvidaste tu contraseña?</Link>
+</Card.Text>
             </Card.Body>
           </Card>
         </Col>

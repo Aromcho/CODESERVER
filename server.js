@@ -18,6 +18,8 @@ import MongoStore from "connect-mongo";
 import __dirname from "./utils.js";
 import dbConnect from "./src/utils/dbConnect.util.js";
 
+import argsUtil from "./src/utils/args.util.js";
+
 const server = express();
 const port = 8080;
 const ready = async () => {
@@ -66,3 +68,5 @@ server.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
 server.use(pathHandler);
+
+console.log(argsUtil);

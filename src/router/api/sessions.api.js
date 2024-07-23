@@ -1,6 +1,8 @@
 import CustomRouter from "../CustomRouter.js";
 import passport from "../../middlewares/passport.mid.js";
 import passportCb from "../../middlewares/passportCb.mid.js";
+import { generateResetToken, sendResetEmail, verifyResetToken, updatePassword } from "../../utils/passwordResetService.js";
+
 
 class SessionsRouter extends CustomRouter {
   init() {
@@ -73,6 +75,40 @@ class SessionsRouter extends CustomRouter {
         next(error);
       }
     });
+
+    // Ruta para enviar el correo de restablecimiento de contraseña
+    this.create("/password", async (req, res, next) => {
+      const { email } = req.body;
+      try {
+        const token = await generateResetToken(email);
+        await sendResetEmail(email, token);
+    
+        return res.status(200).json({ message: "Correo de restablecimiento enviado!" });
+      } catch (error) {
+        return next(error);
+      }
+    });
+
+    // Ruta para actualizar la contraseña
+    // Ruta para actualizar la contraseña
+this.update("/password", async (req, res, next) => {
+  const { token, newPassword } = req.body;
+  try {
+    const isValidToken = await verifyResetToken(token);
+    if (!isValidToken) {
+      return res.status(400).json({ message: "Token inválido o expirado" });
+    }
+
+    await updatePassword(token, newPassword);
+
+    return res.status(200).json({ message: "Contraseña actualizada!" });
+  } catch (error) {
+    return next(error);
+  }
+});
+
+    
+    
   }
 }
 
