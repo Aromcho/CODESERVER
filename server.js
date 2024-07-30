@@ -12,6 +12,9 @@ import socketCb from "./src/router/index.socket.js";
 import compression from "compression";
 import cors from "cors"; // Importa el middleware CORS
 import winston from "./src/middlewares/winston.mid.js";
+import swaggerJSDoc from "swagger-jsdoc";
+import { serve, setup } from "swagger-ui-express";
+import swaggerOptions from "./src/utils/swagger.util.js"; // Ajuste aquí
 
 //import fileStore from "session-file-store";
 import MongoStore from "connect-mongo";
@@ -60,6 +63,10 @@ server.use(
 
 // Configuración de CORS
 server.use(cors());
+
+// configuracion de documentacion de la api
+const specs = swaggerJSDoc(swaggerOptions); // Ajuste aquí
+server.use("/api/docs", serve, setup(specs));
 
 // Rutas y middleware de manejo de errores
 server.use("/", indexRouter);
