@@ -14,7 +14,6 @@ import Footer from "./components/Footer/Footer.jsx";
 import ForgotPassword from "./pages/Login/ForgotPassword.jsx";
 import ResetPassword from "./pages/Login/ResetPassword.jsx";
 
-
 function App() {
   return (
       <CartProvider>
@@ -25,7 +24,7 @@ function App() {
             <Route path="/user/login" element={<Login />} />
             <Route path="/user/register" element={<Register />} />
             <Route path="/user/forgot-password" element={<ForgotPassword />} />
-            <Route path="/user/reset-password" element={<ResetPassword/>} />
+            <Route path="/user/reset-password" element={<ResetPassword />} />
             <Route path="/products/real" element={<ItemListContainer />} />
             <Route path="/products/real/:category" element={<ItemListContainer />}/>
             <Route path="/products/:productId"element={<ItemDetailContainer />}/>

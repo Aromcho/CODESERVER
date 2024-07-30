@@ -40,6 +40,7 @@ const ForgotPassword = () => {
                     placeholder="Introduce tu email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="w-100 btn-custom">

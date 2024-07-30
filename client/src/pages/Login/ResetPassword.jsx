@@ -41,6 +41,7 @@ const ResetPassword = () => {
                     placeholder="Código de Seguridad"
                     value={securityCode}
                     onChange={(e) => setSecurityCode(e.target.value)}
+                    required
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -50,6 +51,7 @@ const ResetPassword = () => {
                     placeholder="Nueva Contraseña"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
+                    required
                   />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="w-100 btn-custom">
