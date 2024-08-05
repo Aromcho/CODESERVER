@@ -170,6 +170,7 @@ const ItemDetail = ({ product }) => {
                 <h2 className="text-end fw-light">${product.price.toFixed(2)}</h2>
               </Col>
             </Row>
+            <p className='m-0 pt-1'>Consultar por talle y disponibilidad.</p>
           </div>
         </Col>
       </Row>

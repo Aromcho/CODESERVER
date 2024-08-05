@@ -45,15 +45,23 @@
       flex-direction: column-reverse;
     }
   
-    .category-img,
-    .category-text {
+    .category-img{
+      width: 100%;
+      padding: 0;
+      left: 0;
+    }
+    .category-text{
       width: 100%;
       padding: 10px;
       left: 0;
-    }
+      top:-100px;
+      background: linear-gradient(to top, rgb(0, 0, 0),rgba(0, 0, 0, 0.801), rgba(0, 0, 0, 0.075));   
+     }
   
     .category-text-2 {
       right: 0;
+      top:-100px;
+      background: linear-gradient(to top, rgb(0, 0, 0),rgba(0, 0, 0, 0.801), rgba(0, 0, 0, 0.075));
     }
   
     .category-img img {

@@ -1,0 +1,27 @@
+.horizontal-product-list-container {
+  overflow-x: auto; /* Permite el desplazamiento horizontal */
+  
+
+}
+
+.horizontal-product-list {
+  display: flex; /* Cambia el display a flex para alinear los elementos en fila */
+  flex-wrap: nowrap; /* Evita que los elementos se envuelvan en una nueva línea */
+  gap: 10px; /* Espacio entre los productos */
+}
+
+.item-wrapper {
+  flex: 0 0 auto; /* Asegura que cada elemento mantenga su tamaño y no se encoja */
+  width: 200px; /* Ajusta el ancho de cada producto */
+}
+
+/* media query para mobile */
+
+@media (max-width: 768px) {
+  .horizontal-product-list-container {
+    overflow-x: auto; /* Permite el desplazamiento horizontal */
+    position: relative;
+    top:-50px;
+  
+  }
+}

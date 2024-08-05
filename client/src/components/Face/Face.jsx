@@ -41,7 +41,7 @@ const Face = () => {
 
       {/* Seccion de ubicacion */}
       
-      <Container className="my-5">
+      <Container className="mb-5">
         <LocationSection />
       </Container>
 

@@ -4,7 +4,7 @@ import './LocationSection.css';
 
 const LocationSection = () => {
   return (
-    <Container className="my-5 location-section">
+    <Container className=" location-section">
       <h2 className="text-center mb-4">Nuestra Ubicación</h2>
       <Row className="location-row mb-3">
       <Col md={7} className="location-map">
