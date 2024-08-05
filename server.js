@@ -1,6 +1,5 @@
 import "dotenv/config.js";
 import express from "express";
-import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import indexRouter from "./src/router/index.router.js";
@@ -11,13 +10,18 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import socketCb from "./src/router/index.socket.js";
 import compression from "compression";
-import helmet from "helmet";
 import cors from "cors"; // Importa el middleware CORS
+import winston from "./src/middlewares/winston.mid.js";
+import swaggerJSDoc from "swagger-jsdoc";
+import { serve, setup } from "swagger-ui-express";
+import swaggerOptions from "./src/utils/swagger.util.js"; // Ajuste aquí
 
 //import fileStore from "session-file-store";
 import MongoStore from "connect-mongo";
 import __dirname from "./utils.js";
 import dbConnect from "./src/utils/dbConnect.util.js";
+
+import argsUtil from "./src/utils/args.util.js";
 
 const server = express();
 const port = 8080;
@@ -34,7 +38,7 @@ socketServer.on("connection", socketCb);
 export { socketServer };
 
 // Middleware
-server.use(morgan("dev"));
+server.use(winston);
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use("/public", express.static("public"));
@@ -60,6 +64,10 @@ server.use(
 // Configuración de CORS
 server.use(cors());
 
+// configuracion de documentacion de la api
+const specs = swaggerJSDoc(swaggerOptions); // Ajuste aquí
+server.use("/api/docs", serve, setup(specs));
+
 // Rutas y middleware de manejo de errores
 server.use("/", indexRouter);
 server.use(errorHandler);
@@ -67,3 +75,5 @@ server.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
 server.use(pathHandler);
+
+console.log(argsUtil);

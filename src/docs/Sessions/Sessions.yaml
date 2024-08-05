@@ -1,0 +1,218 @@
+openapi: 3.0.0
+info:
+  title: Sessions API
+  description: API Documentation for Sessions management and authentication
+  version: 1.0.0
+
+paths:
+  /api/sessions/register:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+                role:
+                  type: string
+                  example: "user"
+      responses:
+        201:
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  message:
+                    type: string
+                    example: "Registered!"
+        400:
+          description: Invalid input
+
+  /api/sessions/login:
+    post:
+      summary: Login a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: User logged in successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: "Logged in!"
+                  redirectUrl:
+                    type: string
+                    example: "/admin"
+        401:
+          description: Unauthorized
+
+  /api/sessions/online:
+    get:
+      summary: Check if user is online
+      responses:
+        200:
+          description: User is online
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: "Is online!"
+                  user_id:
+                    type: string
+                    example: "60f7c4f8b4d8c70015b4b5b5"
+                  role:
+                    type: string
+                    example: "user"
+        401:
+          description: Bad auth
+
+  /api/sessions/signout:
+    post:
+      summary: Sign out a user
+      responses:
+        200:
+          description: User signed out successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Signed out!"
+
+  /api/sessions/google:
+    get:
+      summary: Login with Google
+      responses:
+        200:
+          description: Redirect to Google login
+
+  /api/sessions/google/callback:
+    get:
+      summary: Google login callback
+      responses:
+        200:
+          description: User logged in successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  message:
+                    type: string
+                    example: "Logged in!"
+                  redirectUrl:
+                    type: string
+                    example: "/"
+
+  /api/sessions/password:
+    post:
+      summary: Send reset password email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "user@example.com"
+      responses:
+        200:
+          description: Reset password email sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Correo de restablecimiento enviado!"
+
+    put:
+      summary: Update password using reset token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+                  example: "123456"
+                newPassword:
+                  type: string
+                  example: "new_password"
+      responses:
+        200:
+          description: Password updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Contraseña actualizada!"
+        400:
+          description: Invalid or expired token
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        role:
+          type: string
+          enum: ["user", "admin"]
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
