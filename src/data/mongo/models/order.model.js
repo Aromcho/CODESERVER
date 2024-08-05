@@ -3,8 +3,8 @@ import { model, Schema, Types } from "mongoose";
 const collection = "orders";
 const schema = new Schema({
     user_id: { type: Types.ObjectId, required: true, ref: "users", index: true},
-    //event_id: [{ type: Types.ObjectId, required: true, ref: "events" }],
     quantity: { type: Number,default: 1 },
+    address: { type: String, required: true },
     state: { type: String, default: "reserver", enum: ["reserver", "payed", "delivered"], index: true},
 },{
     timestamps: true

@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
-import { Link } from "react-router-dom"; // Importa withRouter en lugar de useHistory
+import React, { useState } from 'react';
+import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { GoogleLogin } from 'react-google-login';
 import "./Register.css";
-import axios from "axios";
-import Swal from "sweetalert2";
 
-const Register = () => { // Añade props como argumento
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
-  const [photo, setPhoto] = useState("");
-  const [age, setAge] = useState("");
-  const [name, setName] = useState("");
+const Register = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
+  const [photo, setPhoto] = useState('');
+  const [age, setAge] = useState('');
+  const [name, setName] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,25 +25,37 @@ const Register = () => { // Añade props como argumento
       age,
       name,
     };
-    // crear el usuario
-    
+
     try {
-      const response = await axios.post("/api/sessions/register", user);
-      if (response.status === 200) {
-        Swal.fire("¡Registrado!", "Has creado tu cuenta con éxito.", "success").then(() => {
+      const response = await axios.post('/api/sessions/register', user);
+      if (response.status === 201) {
+        Swal.fire('¡Registrado!', 'Has creado tu cuenta con éxito.', 'success').then(() => {
           window.location.replace('/');
         });
       }
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        Swal.fire("¡Error!", "El email ya está en uso.", "error");
+        Swal.fire('¡Error!', 'El email ya está en uso.', 'error');
       } else {
-        // Manejo de otros errores o códigos de estado no esperados
-        Swal.fire("¡Error!", "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.", "error");
+        Swal.fire('¡Error!', 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.', 'error');
       }
     }
   };
 
+  const responseGoogle = async (response) => {
+    const { tokenId } = response;
+    try {
+      const res = await axios.post('/api/sessions/google/callback', { tokenId });
+      if (res.status === 200) {
+        Swal.fire('¡Registrado con Google!', 'Has creado tu cuenta con éxito usando Google.', 'success').then(() => {
+          window.location.replace('/');
+        });
+      }
+    } catch (error) {
+      console.error(error);
+      Swal.fire('¡Error!', 'Ha ocurrido un error al intentar registrarse con Google.', 'error');
+    }
+  };
 
   return (
     <Container className="my-2 text-white">
@@ -51,9 +64,17 @@ const Register = () => { // Añade props como argumento
           <Card className="card-custom">
             <Card.Body className="bg-dark-custom">
               <Card.Title className="mb-4 text-white">Registrarse</Card.Title>
-              <Form onSubmit={handleSubmit}>
-              <Form.Group className="mb-2" controlId="formBasicName">
+              <GoogleLogin
+                clientId="988198119199-cv4n71shuifrgu9i9s1cf22338497kbf.apps.googleusercontent.com"
+                buttonText="Registrarse con Google"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                cookiePolicy={'single_host_origin'}
+                className="w-100 btn-google mb-3"
+              />
 
+              <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-2" controlId="formBasicName">
                   <Form.Label className="text-white">Nombre y Apellido</Form.Label>
                   <Form.Control
                     type="text"
@@ -110,8 +131,6 @@ const Register = () => { // Añade props como argumento
                     required
                   />
                 </Form.Group>
-
-                
 
                 <Button
                   variant="primary"

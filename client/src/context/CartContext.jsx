@@ -8,6 +8,7 @@ const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [total, setTotal] = useState(0);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     const checkIfAdmin = async () => {
@@ -18,9 +19,11 @@ const CartProvider = ({ children }) => {
         } else {
           setIsAdmin(false);
         }
+        setUserId(statusResponse.data.user_id);
       } catch (error) {
         console.error('Error al verificar el estado del usuario', error);
         setIsAdmin(false);
+        setUserId(null);
       }
     };
 
@@ -94,7 +97,8 @@ const CartProvider = ({ children }) => {
       const userResponse = await axios.get('/api/sessions/online');
       const userId = userResponse.data.user_id;
       const response = await axios.get(`/api/tickets/${userId}`);
-      setTotal(response.data.response[0].total);
+      const total = response.data.response?.length ? response.data.response[0].total : 0;
+      setTotal(total);
     } catch (error) {
       console.error('Error al obtener el precio total del carrito', error);
     }
@@ -139,6 +143,7 @@ const CartProvider = ({ children }) => {
         cartItems,
         total,
         isAdmin,
+        userId,
         addToCart,
         cantidadTotal,
         borrarTodo,

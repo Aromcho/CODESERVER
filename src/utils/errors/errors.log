@@ -1,0 +1,266 @@
+[33mERROR[39m: undefined - /api/tickets/undefined - 16/7/2024 - input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[33mERROR[39m: undefined - /api/tickets/undefined - 16/7/2024 - input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[33mERROR[39m: Invalid credentials
+[33mERROR[39m: undefined - /api/sessions/login - 16/7/2024 - Invalid credentials
+[31mFATAL[39m: Este es un mensaje de log de nivel FATAL
+[37mERROR[39m: Este es un mensaje de log de nivel ERROR
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: generateResetToken is not defined
+[37mERROR[39m: generateResetToken is not defined
+[37mERROR[39m: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-2ccf808f08esm7553253a91.36 - gsmtp
+[37mERROR[39m: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 98e67ed59e1d1-2cb77304a15sm8644723a91.19 - gsmtp
+[37mERROR[39m: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-1fda9421951sm16937455ad.51 - gsmtp
+[37mERROR[39m: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-70d1dbfe395sm2920181b3a.218 - gsmtp
+[37mERROR[39m: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-70d1ac56a81sm3245092b3a.97 - gsmtp
+[37mERROR[39m: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-1fd6f25a841sm59922875ad.32 - gsmtp
+[37mERROR[39m: proses is not defined
+[37mERROR[39m: prosses is not defined
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Usuario no encontrado
+[37mERROR[39m: Invalid credentials
+[37mERROR[39m: Invalid credentials
+[37mERROR[39m: Invalid credentials
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Invalid credentials
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: callback is not a function
+[37mERROR[39m: callback is not a function
+[37mERROR[39m: orders validation failed: user_id: Path `user_id` is required.
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Bad auth from login!
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: users validation failed: name: Path `name` is required., photo: Path `photo` is required.
+[37mERROR[39m: users validation failed: name: Path `name` is required., photo: Path `photo` is required.
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: users validation failed: name: Path `name` is required., photo: Path `photo` is required.
+[37mERROR[39m: users validation failed: name: Path `name` is required., photo: Path `photo` is required.
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: Cast to ObjectId failed for value "undefined" (type string) at path "user_id" for model "carts"
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: carts validation failed: user_id: Path `user_id` is required.
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+[37mERROR[39m: input must be a 24 character hex string, 12 byte Uint8Array, or an integer

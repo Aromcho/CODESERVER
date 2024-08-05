@@ -1,23 +1,25 @@
-import React, {  useContext ,useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Row, Col, Card, Nav, Button, ButtonGroup } from 'react-bootstrap';
 import { CartContext } from '../../context/CartContext.jsx';
-import './ItemListContainer.css';
-import Swal from 'sweetalert2';
 import ItemList from '../ItemList/ItemList.jsx';
+import './ItemListContainer.css';
 
 const ItemListContainer = () => {
+  const { category: categoryParam } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState(categoryParam);
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
   const [totalPages, setTotalPages] = useState(0);
-  const { cartItems, borrarProducto, addToCart } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
+  useEffect(() => {
+    setCategory(categoryParam);
+    setPage(1); // Reset page to 1 when category changes
+  }, [categoryParam]);
 
   const fetchProducts = async () => {
     try {
@@ -44,9 +46,6 @@ const ItemListContainer = () => {
   useEffect(() => {
     fetchProducts();
   }, [category, page]);
-  
-  
-
 
   if (loading) {
     return <p className="text-center">Loading...</p>;
@@ -57,9 +56,17 @@ const ItemListContainer = () => {
   }
 
   return (
-    <>
-    <ItemList setPage={setPage} page={page} totalPages={totalPages} prevPage={prevPage} nextPage={nextPage} products={products} addToCart={addToCart}  />
-    </>
+    <ItemList
+      setPage={setPage}
+      page={page}
+      totalPages={totalPages}
+      prevPage={prevPage}
+      nextPage={nextPage}
+      products={products}
+      addToCart={addToCart}
+      category={category}
+      setCategory={setCategory}
+    />
   );
 };
 

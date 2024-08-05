@@ -3,7 +3,7 @@
     background-size: cover;
     background-position: center;
     color: white;
-    height: 70vh;
+    height: 80vh;
 
   }
   .overlay {
@@ -72,4 +72,70 @@ button {
 
 button:hover {
   background-color: #0056b3; /* Oscurece el botón ligeramente al pasar el mouse */
+}
+
+ /* zona de categorias destacadas */
+.category-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  
+  padding: 10px;
+
+}
+
+.category-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.category-text {
+  background-color: #333;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  left: -6%;
+}
+.category-text-2 {
+  background-color: #333;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  right: -6%;
+}
+.category-text h3 {
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .category-row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .category-reverse{
+    flex-direction: column-reverse;
+  }
+  
+  .category-img, .category-text {
+    width: 100%;
+    padding: 10px;
+    left: 0;
+    
+  }
+  .category-text-2 {
+    right: 0;
+
+
+  }
+  
+  .category-img img {
+    width: 100%;
+    height: auto;
+  }
+  
 }

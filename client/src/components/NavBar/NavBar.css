@@ -1,0 +1,8 @@
+.custom-navbar {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo transparente inicial */
+    backdrop-filter: blur(10px); /* Aplicar efecto de desenfoque */
+    transition: background-color 0.3s ease-in-out; /* Transición suave del color de fondo */
+  }
+  
+ 
+  

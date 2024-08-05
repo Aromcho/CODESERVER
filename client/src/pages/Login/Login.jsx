@@ -1,28 +1,14 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button, Card } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Card, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './Login.css';
 import axios from 'axios';
-import Swal from 'sweetalert2';
-import { GoogleLogin } from 'react-google-login';
-
-// Configurar interceptor de Axios para agregar el token en las solicitudes
-axios.interceptors.request.use(
-  (config) => {
-    const token = document.cookie.split(';').find(cookie => cookie.trim().startsWith('token='));
-    if (token) {
-      config.headers['Authorization'] = `Bearer ${token.split('=')[1]}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,53 +27,13 @@ const Login = () => {
         } else {
           window.location.replace('/');
         }
+      } else {
+        setAlertMessage(response.data.message);
+        setShowAlert(true);
       }
     } catch (error) {
       console.error(error);
-
-      if (error.response && error.response.status === 401) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Usuario o contraseña incorrectos.',
-        });
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Ha ocurrido un error al intentar iniciar sesión.',
-        });
-      }
     }
-  };
-
-  const handleGoogleSuccess = async (response) => {
-    const { tokenId } = response;
-    try {
-      const res = await axios.post('/api/sessions/google', { tokenId });
-      const statusResponse = await axios.get('/api/sessions/online');
-      if (statusResponse.data.role === 'admin') {
-        window.location.replace('/admin');
-      } else {
-        window.location.replace('/');
-      }
-    } catch (error) {
-      console.error(error);
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Ha ocurrido un error al intentar iniciar sesión con Google.',
-      });
-    }
-  };
-
-  const handleGoogleFailure = (response) => {
-    console.error(response);
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'El inicio de sesión con Google ha fallado.',
-    });
   };
 
   return (
@@ -97,6 +43,13 @@ const Login = () => {
           <Card className="mt-4 card-custom">
             <Card.Body className="bg-dark-custom">
               <Card.Title className="mb-4 text-white">Iniciar sesión</Card.Title>
+              
+              {showAlert && (
+                <Alert variant="danger" onClose={() => setShowAlert(false)} dismissible>
+                  {alertMessage}
+                </Alert>
+              )}
+
               <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label className="text-white">Email</Form.Label>
@@ -105,6 +58,7 @@ const Login = () => {
                     placeholder="Introduce tu email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
                 </Form.Group>
 
@@ -115,23 +69,18 @@ const Login = () => {
                     placeholder="Contraseña"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
                   />
                 </Form.Group>
-
+                
                 <Button variant="primary" type="submit" className="w-100 btn-custom">
                   Iniciar sesión
                 </Button>
               </Form>
-              <GoogleLogin
-                clientId="TU_CLIENT_ID_DE_GOOGLE"
-                buttonText="Iniciar sesión con Google"
-                onSuccess={handleGoogleSuccess}
-                onFailure={handleGoogleFailure}
-                cookiePolicy={'single_host_origin'}
-                className="w-100 mt-3 btn-google"
-              />
               <Card.Text className="text-center mt-3 text-white-custom">
                 <Link to="/user/register">¿No tienes una cuenta? Regístrate</Link>
+                <br />
+                <Link to="/user/forgot-password">¿Olvidaste tu contraseña?</Link>
               </Card.Text>
             </Card.Body>
           </Card>
