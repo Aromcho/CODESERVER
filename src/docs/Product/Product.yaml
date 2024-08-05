@@ -1,0 +1,161 @@
+openapi: 3.1.0
+info:
+  title: Product API
+  description: API for managing products
+  version: 1.0.0
+paths:
+  /api/product:
+    get:
+      summary: Get all products
+      parameters:
+        - in: query
+          name: category
+          schema:
+            type: string
+          description: Category of the products to filter
+      responses:
+        200:
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        404:
+          description: No products found
+    post:
+      summary: Create a new product
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        201:
+          description: Product created successfully
+        400:
+          description: Bad request
+  /api/product/paginate:
+    get:
+      summary: Paginate products
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: integer
+          description: Number of products per page
+        - in: query
+          name: page
+          schema:
+            type: integer
+          description: Page number
+        - in: query
+          name: category
+          schema:
+            type: string
+          description: Category of the products to filter
+      responses:
+        200:
+          description: Paginated list of products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalDocs:
+                    type: integer
+                  page:
+                    type: integer
+                  totalPages:
+                    type: integer
+                  limit:
+                    type: integer
+                  prevPage:
+                    type: integer
+                  nextPage:
+                    type: integer
+                  docs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Product'
+        404:
+          description: No products found
+  /api/product/{pid}:
+    get:
+      summary: Get a product by ID
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID of the product to retrieve
+      responses:
+        200:
+          description: A product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        404:
+          description: Product not found
+    put:
+      summary: Update a product by ID
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID of the product to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        200:
+          description: Product updated successfully
+        404:
+          description: Product not found
+    delete:
+      summary: Delete a product by ID
+      parameters:
+        - in: path
+          name: pid
+          required: true
+          schema:
+            type: string
+          description: ID of the product to delete
+      responses:
+        200:
+          description: Product deleted successfully
+        404:
+          description: Product not found
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: The auto-generated id of the product
+        title:
+          type: string
+          description: Product title
+        description:
+          type: string
+          description: Product description
+        category:
+          type: string
+          description: Product category
+        price:
+          type: number
+          format: float
+          description: Product price
+        stock:
+          type: integer
+          description: Product stock

@@ -1,0 +1,166 @@
+openapi: 3.0.0
+info:
+  title: Cart API
+  description: API Documentation for Cart management
+  version: 1.0.0
+
+paths:
+  /api/cart:
+    get:
+      summary: Get all cart items for a user
+      parameters:
+        - in: query
+          name: user_id
+          schema:
+            type: string
+          description: User ID to filter cart items
+      responses:
+        200:
+          description: List of cart items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CartItem'
+        404:
+          description: No cart items found
+
+    post:
+      summary: Add a new item to the cart
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  example: "60f7c4f8b4d8c70015b4b5b5"
+                product_id:
+                  type: string
+                  example: "60f7c4f8b4d8c70015b4b5b6"
+                quantity:
+                  type: integer
+                  example: 2
+      responses:
+        201:
+          description: Cart item added successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+        400:
+          description: Invalid input
+
+  /api/cart/{nid}:
+    get:
+      summary: Get a cart item by ID
+      parameters:
+        - in: path
+          name: nid
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Cart item data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+        404:
+          description: Cart item not found
+
+    put:
+      summary: Update a cart item by ID
+      parameters:
+        - in: path
+          name: nid
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  example: "60f7c4f8b4d8c70015b4b5b5"
+                product_id:
+                  type: string
+                  example: "60f7c4f8b4d8c70015b4b5b6"
+                quantity:
+                  type: integer
+                  example: 3
+      responses:
+        200:
+          description: Cart item updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+        400:
+          description: Invalid input
+
+    delete:
+      summary: Delete a cart item by ID
+      parameters:
+        - in: path
+          name: nid
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Cart item deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CartItem'
+        404:
+          description: Cart item not found
+
+  /api/cart/all/{nid}:
+    delete:
+      summary: Delete all cart items for a user
+      parameters:
+        - in: query
+          name: nid
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: All cart items deleted successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "All items deleted"
+        404:
+          description: No cart items found
+
+components:
+  schemas:
+    CartItem:
+      type: object
+      properties:
+        _id:
+          type: string
+        user_id:
+          type: string
+        product_id:
+          type: string
+        quantity:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
