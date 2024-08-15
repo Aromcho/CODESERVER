@@ -12,7 +12,7 @@ const Checkout = () => {
   const { cartItems, total, userId, borrarTodo } = useContext(CartContext); // Obtener userId del contexto y la función borrarTodo
   const steps = ['Resumen de la compra', 'Detalles de envío', 'Confirmación'];
   const navigate = useNavigate(); // Hook para redireccionar
-
+  console.log(userId)
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };

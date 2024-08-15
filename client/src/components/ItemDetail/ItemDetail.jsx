@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { CartContext } from "../../context/CartContext.jsx"; // Importar el CartContext
 
 const ItemDetail = ({ product }) => {
+  console.log('Product Details:', product);
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext); // Consumir el CartContext
 
