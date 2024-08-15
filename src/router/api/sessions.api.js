@@ -5,14 +5,14 @@ import { generateResetToken, sendResetEmail, verifyResetToken, updatePassword } 
 
 class SessionsRouter extends CustomRouter {
   init() {
-    this.create("/register", passportCb("register"), register);
-    this.create("/login", passportCb("login"), login);
-    this.read("/online", passportCb("jwt"), online);
-    this.create("/signout", signout);
-    this.read("/google", passport.authenticate("google", { scope: ["email", "profile"] }));
-    this.read("/google/callback", passport.authenticate("google", { session: false }), googleCallback);
-    this.create("/password", sendResetPasswordEmail);
-    this.update("/password", updatePasswordHandler);
+    this.create("/register", ["PUBLIC"],passportCb("register"), register);
+    this.create("/login", ["PUBLIC"],passportCb("login"), login);
+    this.read("/online", ["PUBLIC"],passportCb("jwt"), online);
+    this.create("/signout", ["USER","ADMIN"],signout);
+    this.read("/google", ["PUBLIC"],passport.authenticate("google", { scope: ["email", "profile"] }));
+    this.read("/google/callback", ["PUBLIC"],passport.authenticate("google", { session: false }), googleCallback);
+    this.create("/password", [""],sendResetPasswordEmail);
+    this.update("/password",[""], updatePasswordHandler);
   }
 }
 

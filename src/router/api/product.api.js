@@ -3,12 +3,12 @@ import productManager from '../../data/mongo/managers/ProductManager.mongo.js';
 
 class ProductsRouter extends CustomRouter {
   init() {
-    this.read("/", read);
-    this.read("/paginate", paginate);
-    this.read("/:pid", readOne);
-    this.create("/", create);
-    this.update("/:pid", update);
-    this.destroy("/:pid", destroy);
+    this.read("/", ["PUBLIC"],  read);
+    this.read("/paginate",["PUBLIC"],  paginate);
+    this.read("/:pid",["PUBLIC"],  readOne);
+    this.create("/",["admin"],  create);
+    this.update("/:pid",["PUBLIC"],  update);
+    this.destroy("/:pid",["PUBLIC"],  destroy);
   }
 }
 

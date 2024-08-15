@@ -26,6 +26,10 @@ class CustomRouter {
     };
 
     policies = (policies) => async (req, res, next) => {
+        if (!Array.isArray(policies)) {
+            return res.error400("Policies should be an array.");
+        }
+    
         if (policies.includes("PUBLIC")) {
             return next();
         } else {
@@ -39,7 +43,7 @@ class CustomRouter {
                     (policies.includes("admin") && role === 1)
                 ) {
                     const user = await usersManager.readByEmail(email);
-                    req.user = user; // Proteger la contraseña del usuario!!!
+                    req.user = user; // Proteger la contraseña
                     return next();
                 } else {
                     return res.error403();
@@ -49,6 +53,7 @@ class CustomRouter {
             }
         }
     };
+    
 
     applyCbs(callbacks) {
         return callbacks.map(callback => (req, res, next) => {
@@ -60,24 +65,24 @@ class CustomRouter {
         });
     }
 
-    create(path, ...callbacks) {
-        this.router.post(path, this.responses, ...this.applyCbs(callbacks));
+    create(path, arrayOfPolicies, ...callbacks) {
+        this.router.post(path, this.responses, this.policies(arrayOfPolicies), ...this.applyCbs(callbacks));
     }
 
-    read(path, ...callbacks) {
-        this.router.get(path, this.responses, ...this.applyCbs(callbacks));
+    read(path, arrayOfPolicies, ...callbacks) {
+        this.router.get(path, this.responses, this.policies(arrayOfPolicies), ...this.applyCbs(callbacks));
     }
 
-    update(path, ...callbacks) {
-        this.router.put(path, this.responses, ...this.applyCbs(callbacks));
+    update(path, arrayOfPolicies, ...callbacks) {
+        this.router.put(path, this.responses, this.policies(arrayOfPolicies), ...this.applyCbs(callbacks));
     }
 
-    destroy(path, ...callbacks) {
-        this.router.delete(path, this.responses, ...this.applyCbs(callbacks));
+    destroy(path, arrayOfPolicies, ...callbacks) {
+        this.router.delete(path, this.responses, this.policies(arrayOfPolicies), ...this.applyCbs(callbacks));
     }
 
     use(path, ...callbacks) {
-        this.router.use(path, this.responses, ...this.applyCbs(callbacks));
+        this.router.use(path, this.responses,  ...this.applyCbs(callbacks));
     }
 }
 
