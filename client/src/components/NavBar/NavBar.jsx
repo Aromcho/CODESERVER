@@ -5,13 +5,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Cart from '../Carrito/Carrito.jsx';
 import axios from 'axios';
 import { CartContext } from "../../context/CartContext.jsx";
 import Swal from 'sweetalert2';
 import BioCard from '../../pages/Admin/BioCard/BioCard.jsx';
-import { FaUserCircle, FaShoppingCart, FaSignInAlt, FaUserPlus } from 'react-icons/fa'; // Import icons from react-icons library
-import './NavBar.css'; // Import your custom CSS file for NavBar styling
+import { FaUserCircle, FaShoppingCart, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
+import './NavBar.css';
 
 const NavBar = () => {
   const [isOnline, setIsOnline] = useState(false);
@@ -22,7 +21,6 @@ const NavBar = () => {
       try {
         const response = await axios.get("/api/sessions/online");
         setIsOnline(response.data.statusCode === 200);
-
       } catch (error) {
         setIsOnline(false);
       }
@@ -63,13 +61,17 @@ const NavBar = () => {
           {isAdmin ? (
             <h5 className='text-white m-1'>Hola Administrador</h5>
           ) : (
-            <Cart cartItems={cartItems} />
+            <Button as={Link} to="/carrito" variant="dark" className="me-2">
+              <FaShoppingCart className="icon" />
+              {cartItems.length > 0 && (
+                <span className="badge">{cartItems.length}</span>
+              )}
+            </Button>
           )}
           <Dropdown className="ms-1">
             <Dropdown.Toggle variant="dark" id="dropdown-basic">
               <FaUserCircle className="icon" />
             </Dropdown.Toggle>
-
             <Dropdown.Menu align="end" variant="dark">
               <Dropdown.Item as="div">
                 <BioCard />
@@ -90,14 +92,19 @@ const NavBar = () => {
           <Button className="ms-1 auth-button" as={Link} to="/user/register" variant="dark">
             <FaUserPlus className="icon" />
           </Button>
-          <Cart cartItems={cartItems} />
+          <Button as={Link} to="/carrito" variant="dark" className="me-2">
+            <FaShoppingCart className="icon" />
+            {cartItems.length > 0 && (
+              <span className="badge">{cartItems.length}</span>
+            )}
+          </Button>
         </div>
       );
     }
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg"  variant="dark" className="custom-navbar fixed-top">
+    <Navbar collapseOnSelect expand="lg" variant="dark" className="custom-navbar fixed-top">
       <Container>
         <Navbar.Brand as={Link} to="/" className="navbar-brand">
           Aroncho's
@@ -107,6 +114,12 @@ const NavBar = () => {
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/products/real" className="nav-link">
               Tienda
+            </Nav.Link>
+            <Nav.Link as={Link} to="/sell" className="nav-link">
+              Vender
+            </Nav.Link>
+            <Nav.Link as={Link} to="/admin" className="nav-link">
+              Admin
             </Nav.Link>
           </Nav>
           {renderAuthButtons()}

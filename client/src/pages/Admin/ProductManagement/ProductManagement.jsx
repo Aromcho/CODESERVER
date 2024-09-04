@@ -40,7 +40,6 @@ const ProductManagement = () => {
     try {
       const response = await axios.post('/api/product', newProduct);
       console.log('Product uploaded:', response.data);
-      fetchProducts(); // Actualizar la lista de productos después de la carga exitosa
       setNewProduct({
         title: '',
         photo: '',

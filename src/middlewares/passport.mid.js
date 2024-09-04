@@ -3,7 +3,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as JWTStrategy, ExtractJwt } from "passport-jwt";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { createHash, verifyHash } from "../utils/hash.util.js";
-import usersManager from "../data/mongo/managers/UserManager.mongo.js";
+import usersManager from "../DAO/mongo/managers/UserManager.mongo.js";
 import { createToken } from "../utils/token.util.js";
 
 // Estrategia de registro local

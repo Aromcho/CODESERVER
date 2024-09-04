@@ -1,5 +1,5 @@
 import crypto from "crypto";
-import User from "../data/mongo/models/user.model.js";
+import User from "../DAO/mongo/models/user.model.js";
 import { sendEmail } from "../utils/email.servise.js";
 import bcrypt from 'bcrypt';
 

@@ -1,54 +1,16 @@
-import { Router } from "express";
+import CustomRouter from "../CustomRouter.js";
+import { setCookies, getCookies, destroyCookie, setSignedCookie, getSignedCookies } from "../../controller/cookies.controller.js";
 
-const cookieRouter = Router();
+class CookiesRouter extends CustomRouter {
+  init() {
+    this.read('/set', ["PUBLIC"], setCookies); // Cualquier usuario puede establecer cookies
+    this.read('/', ["PUBLIC"], getCookies); // Cualquier usuario puede obtener cookies
+    this.destroy('/destroy/:cookie', ["PUBLIC"], destroyCookie); // Cualquier usuario puede eliminar una cookie
+    this.read('/signed', ["PUBLIC"], setSignedCookie); // Cualquier usuario puede establecer una cookie firmada
+    this.read('/get-signed', ["PUBLIC"], getSignedCookies); // Cualquier usuario puede obtener cookies firmadas
+  }
+}
 
-// Endpoint para obtener una cookie
-cookieRouter.get('/set', (req, res, next) => {
-    try {
-        return res
-       .cookie('cookie', 'cookieValue', { maxAge: 100000 })
-       .cookie('cookieName2', 'cookieValue2', { maxAge: 1000 }) 
-       .cookie('online', 'true', { maxAge: 1000 })
-       .json({ message: 'Cookie se vence en 10s' });
-    } catch (error) {
-        return next(error);
-        
-    }
-})
-    
+const cookiesRouter = new CookiesRouter();
+export default cookiesRouter.getRouter();
 
-cookieRouter.get('/', (req, res,next) => {
-    try {
-        const cookies = req.cookies;
-        const online = req.cookies.online;
-        return res.json({ cookies, online });
-    } catch (error) {
-        return next(error);
-    }
-});
-    
-
-// Endpoint para eliminar una cookie
-cookieRouter.get('/destroy/:cookie', (req, res, next) => {
-    const { cookie } = req.params;
-    return res.clearCookie(cookie).json({ message: 'Cookie eliminada' + cookie + "eliminada"});
-    }
-    
-);
-
-cookieRouter.get('/signed', (req, res, next) => {
-    try {
-        return res.cookie("role", "admi", { signed: true }).json({ message: "Cookie firmada" });
-
-    } catch (error) {
-        return next(error);
-    }
-});
-cookieRouter.get('/get-signed', (req, res, next) => {
-    try {
-        return res.json({ cookies: req.signedCookies });
-    } catch (error) {
-        return next(error);
-    }
-});
- export default cookieRouter;

@@ -1,0 +1,45 @@
+.checkout-container {
+    margin-top: 30px;
+  }
+  
+  .checkout-card {
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .checkout-title {
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .checkout-input {
+    margin-bottom: 15px;
+  }
+  
+  .checkout-total {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  .checkout-divider {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .checkout-confirmation {
+    margin-top: 15px;
+  }
+  
+  .checkout-stepper {
+    margin-bottom: 30px;
+  }
+  
+  .checkout-button {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .checkout-button:hover {
+    background-color: #0056b3;
+  }
+  

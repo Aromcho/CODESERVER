@@ -57,16 +57,17 @@ const ItemListContainer = () => {
 
   return (
     <ItemList
-      setPage={setPage}
-      page={page}
-      totalPages={totalPages}
-      prevPage={prevPage}
-      nextPage={nextPage}
-      products={products}
-      addToCart={addToCart}
-      category={category}
-      setCategory={setCategory}
-    />
+  setPage={setPage}
+  page={page}
+  totalPages={totalPages}
+  prevPage={prevPage}
+  nextPage={nextPage}
+  products={products}
+  addToCart={addToCart}
+  category={category}
+  setCategory={setCategory}  // Asegúrate de definir y pasar esta función
+/>
+
   );
 };
 

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata: 
-  name: adoptme
+  name: aronchos
 spec:
   selector:
     app: app
@@ -18,11 +18,11 @@ spec:
   replicas: 10
   selector:
     matchLabels:
-      app: adoptme
+      app: aronchos
   template:
     metadata:
       labels:
-        app: adoptme
+        app: aronchos
     spec:
       containers:
       - name: app

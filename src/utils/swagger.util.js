@@ -1,22 +1,22 @@
+import path from "path";
 import __dirname from "../../utils.js";
 
 const options = {
   definition: {
-    openapi: "3.1.0",
+    openapi: "3.0.0", // Asegúrate de que la versión sea correcta
     info: {
-      title: "ADOPT ME API",
-      description: "Documentation of Adopt me API",
+      title: "API Documentation",
+      description: "Documentation for the API endpoints",
       version: "1.0.0"
     },
   },
   apis: [
-    __dirname + "/src/docs/Cart/Cart.yaml",
-    __dirname + "/src/docs/Order/Order.yaml",
-    __dirname + "/src/docs/Product/Product.yaml",
-    __dirname + "/src/docs/Sessions/Sessions.yaml",
-    __dirname + "/src/docs/Ticket/Ticket.yaml",
-    __dirname + "/src/docs/User/User.yaml",
-
+    path.join(__dirname, "/src/docs/Cart/Cart.yaml"),
+    path.join(__dirname, "/src/docs/Order/Order.yaml"),
+    path.join(__dirname, "/src/docs/Product/Product.yaml"),
+    path.join(__dirname, "/src/docs/Sessions/Sessions.yaml"),
+    path.join(__dirname, "/src/docs/Ticket/Ticket.yaml"),
+    path.join(__dirname, "/src/docs/User/User.yaml"),
   ],
 };
 

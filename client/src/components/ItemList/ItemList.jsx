@@ -12,18 +12,19 @@ const ItemList = ({
   prevPage,
   nextPage,
   totalPages,
-  category,
-  setCategory
+  category
 }) => {
   const { category: categoryParam } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    setCategory(categoryParam);
-  }, [categoryParam, setCategory]);
+    // Aquí es donde estaba el problema. Eliminamos esta línea si no es necesaria.
+    // setCategory(categoryParam);
+  }, [categoryParam]);
 
   const handleCategoryChange = (newCategory) => {
-    setCategory(newCategory);
+    // Si necesitas cambiar la categoría, asegúrate de que `setCategory` se define en el componente padre.
+    // setCategory(newCategory);
     setPage(1);
     navigate(`/products/real/${newCategory || ""}`);
   };
@@ -31,22 +32,21 @@ const ItemList = ({
   return (
     <section className="d-flex flex-column">
       <div className="hero-list d-flex align-items-center justify-content-center flex-column">
-      <p className="lead text-light">La moda que buscas, en un solo lugar.</p>
-
+        <p className="lead text-light">La moda que buscas, en un solo lugar.</p>
       </div>
       <Container className="p-1 mb-1">
-      <Dropdown className="mb-4">
-        <Dropdown.Toggle variant="outline-dark" size="sm" id="dropdown-basic">
-          {category ? category : "Filtrar"}
-        </Dropdown.Toggle>
+        <Dropdown className="mb-4">
+          <Dropdown.Toggle variant="outline-dark" size="sm" id="dropdown-basic">
+            {category ? category : "Filtrar"}
+          </Dropdown.Toggle>
 
-        <Dropdown.Menu>
-          <Dropdown.Item onClick={() => handleCategoryChange(null)}>Todos</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleCategoryChange('Ropa')}>Ropa</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleCategoryChange('Calzado')}>Calzado</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleCategoryChange('Accesorios')}>Accesorios</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => handleCategoryChange(null)}>Todos</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleCategoryChange('Ropa')}>Ropa</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleCategoryChange('Calzado')}>Calzado</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleCategoryChange('Accesorios')}>Accesorios</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
         <div className="container item-list">
           {products.map((product) => (
             <Item key={product.id} product={product} addToCart={addToCart} />

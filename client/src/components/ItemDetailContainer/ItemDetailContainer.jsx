@@ -15,7 +15,7 @@ function ItemDetailContainer() {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`/api/product/${productId}`);
-        setProduct(response.data);
+        setProduct(response.data.response);
       } catch (error) {
         setError(error.message);
       }

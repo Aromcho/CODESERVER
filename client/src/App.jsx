@@ -13,6 +13,7 @@ import Admin from "./pages/Admin/Admin.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import ForgotPassword from "./pages/Login/ForgotPassword.jsx";
 import ResetPassword from "./pages/Login/ResetPassword.jsx";
+import Vender from "./pages/Vender/Vender.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Face />} />
+            <Route path="/sell" element={<Vender />} />
             <Route path="/user/login" element={<Login />} />
             <Route path="/user/register" element={<Register />} />
             <Route path="/user/forgot-password" element={<ForgotPassword />} />
