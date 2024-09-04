@@ -9,20 +9,23 @@ const Face = () => {
     <div>
       {/* Sección Hero */}
       <div className="hero d-flex align-items-center justify-content-center flex-column">
-        <div className="overlay w-100 d-flex align-items-center justify-content-center flex-column">
-          <h1 className="display-3 text-white">
-            Bienvenido a Mi Tienda de Ropa
-          </h1>
-          <p className="lead text-light">
-            La moda que buscas, en un solo lugar.
-          </p>
+      <div className="overlay w-100 d-flex align-items-center justify-content-center flex-column">
+  <h1 className="display-3 text-white">¡Aroncho´s Shop!</h1>
+  <p className="lead text-light">
+    Compra, vende y descubre moda en un solo lugar.
+  </p>
+  <Link to="/products/real">
+    <Button variant="outline-light" size="lg" className="mb-3">
+      Explora Productos
+    </Button>
+  </Link>
+  <Link to="/sell">
+    <Button variant="light" size="lg">
+      Empieza a Vender
+    </Button>
+  </Link>
+</div>
 
-          <Link to="/products/real">
-            <Button variant="outline-light" size="lg">
-              Explora Nuestros Productos
-            </Button>
-          </Link>
-        </div>
       </div>
 
       {/* Sección de Categorías Destacadas */}

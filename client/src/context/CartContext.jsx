@@ -14,12 +14,13 @@ const CartProvider = ({ children }) => {
     const checkIfAdmin = async () => {
       try {
         const statusResponse = await axios.get('/api/sessions/online');
-        if (statusResponse.data.role === 'admin') {
-          setIsAdmin(true);
-        } else {
-          setIsAdmin(false);
+        const { role, user_id } = statusResponse.data;
+        setIsAdmin(role === 'ADMIN');
+        setUserId(user_id);
+        if (user_id) {
+          await fetchCartItems(user_id);
+          await getTotalPrice(user_id);
         }
-        setUserId(statusResponse.data.user_id);
       } catch (error) {
         console.error('Error al verificar el estado del usuario', error);
         setIsAdmin(false);
@@ -28,16 +29,18 @@ const CartProvider = ({ children }) => {
     };
 
     checkIfAdmin();
-    fetchCartItems();
-    getTotalPrice();
   }, []);
 
-  const fetchCartItems = async () => {
+  useEffect(() => {
+    if (userId) {
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+  }, [cartItems, userId]);
+
+  const fetchCartItems = async (userId) => {
     try {
-      const userResponse = await axios.get('/api/sessions/online');
-      const userId = userResponse.data.user_id;
       const cartResponse = await axios.get(`/api/cart?user_id=${userId}`);
-      setCartItems(cartResponse.data.response);
+      setCartItems(cartResponse.data.response || []);
     } catch (error) {
       console.error('Error al obtener los productos del carrito', error);
     }
@@ -45,30 +48,20 @@ const CartProvider = ({ children }) => {
 
   const addToCart = async (product, quantity) => {
     try {
-      const userResponse = await axios.get('/api/sessions/online');
-      if (userResponse.status !== 200) {
-        throw new Error('No se pudo verificar el estado del usuario.');
-      }
-      const userId = userResponse.data.user_id;
       const response = await axios.post('/api/cart/', {
         product_id: product._id,
         user_id: userId,
         quantity,
       });
       if (response.status === 200) {
-        setCartItems((prevItems) => {
-          if (!Array.isArray(prevItems)) {
-            prevItems = [];
-          }
-          return [
-            ...prevItems,
-            {
-              _id: response.data._id,
-              product_id: product,
-              quantity,
-            },
-          ];
-        });
+        setCartItems((prevItems) => [
+          ...prevItems,
+          {
+            _id: response.data._id,
+            product_id: product,
+            quantity,
+          },
+        ]);
         Swal.fire({
           icon: 'success',
           title: '¡Producto añadido al carrito!',
@@ -76,7 +69,7 @@ const CartProvider = ({ children }) => {
           confirmButtonText: 'OK',
         });
       } else {
-        throw new Error('No se pudo añadir el producto al carrito.');
+        console.error('No se pudo añadir el producto al carrito.');
       }
     } catch (error) {
       console.error('Error al agregar el producto al carrito', error);
@@ -89,13 +82,11 @@ const CartProvider = ({ children }) => {
   };
 
   const cantidadTotal = () => {
-    return cartItems.reduce((total, producto) => total + producto.cantidad, 0);
+    return cartItems.reduce((total, producto) => total + producto.quantity, 0);
   };
 
-  const getTotalPrice = async () => {
+  const getTotalPrice = async (userId) => {
     try {
-      const userResponse = await axios.get('/api/sessions/online');
-      const userId = userResponse.data.user_id;
       const response = await axios.get(`/api/tickets/${userId}`);
       const total = response.data.response?.length ? response.data.response[0].total : 0;
       setTotal(total);
@@ -108,12 +99,9 @@ const CartProvider = ({ children }) => {
     try {
       const response = await axios.delete(`/api/cart/${idProducto}`);
       if (response.status === 200) {
-        setCartItems((prevItems) => {
-          if (!Array.isArray(prevItems)) {
-            prevItems = [];
-          }
-          return prevItems.filter((producto) => producto._id !== idProducto);
-        });
+        setCartItems((prevItems) =>
+          prevItems.filter((producto) => producto._id !== idProducto)
+        );
       } else {
         console.error('Error al eliminar el producto del carrito');
       }
@@ -124,8 +112,6 @@ const CartProvider = ({ children }) => {
 
   const borrarTodo = async () => {
     try {
-      const userResponse = await axios.get('/api/sessions/online');
-      const userId = userResponse.data.user_id;
       const response = await axios.delete(`/api/cart/all/${userId}`);
       if (response.status === 200) {
         setCartItems([]);

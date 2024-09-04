@@ -1,18 +1,19 @@
 import React, { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom'; // Cambiado a useNavigate para React Router v6
-import { Container, Grid, Card, CardContent, Typography, List, ListItem, ListItemText, FormControl, InputLabel, Select, MenuItem, TextField, Button, Stepper, Step, StepLabel } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Container, Grid, Card, CardContent, Typography, List, ListItem, ListItemText, FormControl, InputLabel, Select, MenuItem, TextField, Button, Stepper, Step, StepLabel, Divider } from '@mui/material';
 import { CartContext } from '../../context/CartContext.jsx';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import './Checkout.css';
 
 const Checkout = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [address, setAddress] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('');
-  const { cartItems, total, userId, borrarTodo } = useContext(CartContext); // Obtener userId del contexto y la función borrarTodo
+  const { cartItems, total, userId, borrarTodo } = useContext(CartContext);
   const steps = ['Resumen de la compra', 'Detalles de envío', 'Confirmación'];
-  const navigate = useNavigate(); // Hook para redireccionar
-  console.log(userId)
+  const navigate = useNavigate();
+
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -24,56 +25,26 @@ const Checkout = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (activeStep === steps.length - 1) {
-      await handleSubmit(); // Aquí se maneja la lógica de envío del formulario
+      await handlePayment();
     } else {
       handleNext();
     }
   };
 
-  const handleSubmit = async () => {
+  const handlePayment = async () => {
     try {
-      const orderData = {
-        user_id: userId, // Usar userId del contexto
-        address,
-        state: 'reserver',
-        quantity: cartItems.length, // O la cantidad total de productos si es necesario
-      };
-
-      const response = await axios.post('/api/orders', orderData);
-      console.log(response.data); // Manejar la respuesta según sea necesario
-
-      // Mostrar SweetAlert de éxito
-      Swal.fire({
-        icon: 'success',
-        title: 'Compra realizada con éxito',
-        text: 'Tu pedido ha sido realizado correctamente.',
-        confirmButtonText: 'OK'
-      }).then(() => {
-        // Redireccionar a la página principal
-        navigate('/');
-
-        // Vaciar el carrito
-        axios.delete(`/api/cart/all/${userId}`)
-          .then(() => {
-            borrarTodo(); // Llamar a la función borrarTodo del contexto
-          })
-          .catch((error) => {
-            console.error('Error al vaciar el carrito:', error);
-          });
-      });
-
-      // Resetear el formulario después de la compra
-      setAddress('');
-      setPaymentMethod('');
-      setActiveStep(0);
+      const response = await axios.post('/api/payments', { user_id: userId });
+      
+      // Redirigir al usuario a la URL de pago de Stripe
+      const { url } = response.data;
+      window.location.href = url;
 
     } catch (error) {
-      console.error('Error al crear la orden:', error);
-      // Mostrar SweetAlert de error
+      console.error('Error al procesar el pago:', error);
       Swal.fire({
         icon: 'error',
-        title: 'Error al realizar la compra',
-        text: 'Hubo un problema al procesar tu pedido. Por favor, inténtalo de nuevo.',
+        title: 'Error al realizar el pago',
+        text: 'Hubo un problema al procesar tu pago. Por favor, inténtalo de nuevo.',
         confirmButtonText: 'OK'
       });
     }
@@ -83,26 +54,27 @@ const Checkout = () => {
     switch (step) {
       case 0:
         return (
-          <Card>
+          <Card className="checkout-card">
             <CardContent>
-              <Typography variant="h5" component="h2">Resumen de la compra</Typography>
+              <Typography variant="h5" component="h2" className="checkout-title">Resumen de la compra</Typography>
               <List>
                 {cartItems.map((product) => (
-                  <ListItem key={product.id}>
+                  <ListItem key={product._id}>
                     <ListItemText primary={product.product_id.title} secondary={`Precio: $${product.product_id.price}`} />
                   </ListItem>
                 ))}
               </List>
-              <Typography variant="body1">Total: ${total}</Typography>
-              <Typography variant="body1">Cantidad de productos: {cartItems.length}</Typography>
+              <Divider className="checkout-divider" />
+              <Typography variant="body1" className="checkout-total">Total: ${total}</Typography>
+              <Typography variant="body1" className="checkout-total">Cantidad de productos: {cartItems.length}</Typography>
             </CardContent>
           </Card>
         );
       case 1:
         return (
-          <Card>
+          <Card className="checkout-card">
             <CardContent>
-              <Typography variant="h5" component="h2">Detalles de la compra</Typography>
+              <Typography variant="h5" component="h2" className="checkout-title">Detalles de la compra</Typography>
               <form onSubmit={handleFormSubmit}>
                 <TextField
                   label="Dirección de envío"
@@ -113,8 +85,9 @@ const Checkout = () => {
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
                   required
+                  className="checkout-input"
                 />
-                <FormControl fullWidth margin="normal">
+                <FormControl fullWidth margin="normal" className="checkout-input">
                   <InputLabel>Método de pago</InputLabel>
                   <Select
                     value={paymentMethod}
@@ -132,10 +105,10 @@ const Checkout = () => {
         );
       case 2:
         return (
-          <Card>
+          <Card className="checkout-card">
             <CardContent>
-              <Typography variant="h5" component="h2">Confirmación</Typography>
-              {/* Aquí se pueden agregar más detalles de confirmación según sea necesario */}
+              <Typography variant="h5" component="h2" className="checkout-title">Confirmación</Typography>
+              <Typography variant="body1" className="checkout-confirmation">Tu pedido está casi listo. Revisa los detalles y finaliza tu compra.</Typography>
             </CardContent>
           </Card>
         );
@@ -145,23 +118,23 @@ const Checkout = () => {
   };
 
   return (
-    <Container maxWidth="md" className="mt-5">
-      <Stepper activeStep={activeStep} alternativeLabel>
+    <Container maxWidth="md" className="checkout-container">
+      <Stepper activeStep={activeStep} alternativeLabel className="checkout-stepper">
         {steps.map((label) => (
           <Step key={label}>
             <StepLabel>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>
-      <div>
+      <div className="checkout-content">
         {getStepContent(activeStep)}
         <Grid container spacing={2} justifyContent="flex-end">
           <Grid item>
-            <Button disabled={activeStep === 0} onClick={handleBack}>Atrás</Button>
+            <Button disabled={activeStep === 0} onClick={handleBack} className="checkout-button">Atrás</Button>
           </Grid>
           <Grid item>
-            <Button variant="contained" color="primary" onClick={handleFormSubmit}>
-              {activeStep === steps.length - 1 ? 'Finalizar compra' : 'Siguiente'}
+            <Button variant="contained" color="primary" onClick={handleFormSubmit} className="checkout-button">
+              {activeStep === steps.length - 1 ? 'Pagar' : 'Siguiente'}
             </Button>
           </Grid>
         </Grid>

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import usersManager from "../data/mongo/managers/UserManager.mongo.js";
+import usersManager from "../DAO/mongo/managers/UserManager.mongo.js";
 import { verifyToken } from "../utils/token.util.js";
 
 class CustomRouter {
@@ -33,14 +33,15 @@ class CustomRouter {
         if (policies.includes("PUBLIC")) {
             return next();
         } else {
-            let token = req.cookies["token"];
+            let token = req.signedCookies["jwt"]; // Usar la cookie firmada "jwt"
             if (!token) return res.error401();
             try {
                 token = verifyToken(token);
                 const { role, email } = token;
                 if (
-                    (policies.includes("user") && role === 0) ||
-                    (policies.includes("admin") && role === 1)
+                    (policies.includes("USER") && role === 'USER') ||
+                    (policies.includes("ADMIN") && role === 'ADMIN') ||
+                    (policies.includes("PREM") && role === 'PREM')
                 ) {
                     const user = await usersManager.readByEmail(email);
                     req.user = user; // Proteger la contraseña
@@ -54,7 +55,6 @@ class CustomRouter {
         }
     };
     
-
     applyCbs(callbacks) {
         return callbacks.map(callback => (req, res, next) => {
             try {

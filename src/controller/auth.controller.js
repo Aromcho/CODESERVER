@@ -1,4 +1,4 @@
-import User from "../data/mongo/models/user.model";
+import User from "../DAO/mongo/models/user.model";
 
 // authController
 const register = (req, res) => {

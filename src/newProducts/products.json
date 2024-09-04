@@ -1,0 +1,323 @@
+[
+    {
+      "title": "Camiseta Negra",
+      "photo": "https://example.com/photo1.jpg",
+      "category": "Ropa",
+      "price": 25,
+      "stock": 50,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Pantalones Vaqueros",
+      "photo": "https://example.com/photo2.jpg",
+      "category": "Ropa",
+      "price": 45,
+      "stock": 30,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Sudadera con Capucha",
+      "photo": "https://example.com/photo3.jpg",
+      "category": "Ropa",
+      "price": 35,
+      "stock": 20,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Chaqueta de Cuero",
+      "photo": "https://example.com/photo4.jpg",
+      "category": "Ropa",
+      "price": 120,
+      "stock": 10,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Camisa Blanca",
+      "photo": "https://example.com/photo5.jpg",
+      "category": "Ropa",
+      "price": 30,
+      "stock": 40,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Zapatillas Deportivas",
+      "photo": "https://example.com/photo6.jpg",
+      "category": "Calzado",
+      "price": 60,
+      "stock": 25,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Botas de Montaña",
+      "photo": "https://example.com/photo7.jpg",
+      "category": "Calzado",
+      "price": 80,
+      "stock": 15,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Zapatos de Vestir",
+      "photo": "https://example.com/photo8.jpg",
+      "category": "Calzado",
+      "price": 70,
+      "stock": 20,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Sandalias de Playa",
+      "photo": "https://example.com/photo9.jpg",
+      "category": "Calzado",
+      "price": 20,
+      "stock": 40,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Botines Casual",
+      "photo": "https://example.com/photo10.jpg",
+      "category": "Calzado",
+      "price": 55,
+      "stock": 18,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Gorra de Beisbol",
+      "photo": "https://example.com/photo11.jpg",
+      "category": "Accesorios",
+      "price": 20,
+      "stock": 100,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Cinturón de Cuero",
+      "photo": "https://example.com/photo12.jpg",
+      "category": "Accesorios",
+      "price": 35,
+      "stock": 25,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Gafas de Sol",
+      "photo": "https://example.com/photo13.jpg",
+      "category": "Accesorios",
+      "price": 50,
+      "stock": 30,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Reloj de Pulsera",
+      "photo": "https://example.com/photo14.jpg",
+      "category": "Accesorios",
+      "price": 120,
+      "stock": 12,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Bolso de Mano",
+      "photo": "https://example.com/photo15.jpg",
+      "category": "Accesorios",
+      "price": 70,
+      "stock": 15,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Teléfono Inteligente",
+      "photo": "https://example.com/photo16.jpg",
+      "category": "Electrónica",
+      "price": 699,
+      "stock": 10,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Auriculares Bluetooth",
+      "photo": "https://example.com/photo17.jpg",
+      "category": "Electrónica",
+      "price": 120,
+      "stock": 35,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Laptop Gaming",
+      "photo": "https://example.com/photo18.jpg",
+      "category": "Electrónica",
+      "price": 1299,
+      "stock": 5,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Smartwatch",
+      "photo": "https://example.com/photo19.jpg",
+      "category": "Electrónica",
+      "price": 250,
+      "stock": 20,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Cámara DSLR",
+      "photo": "https://example.com/photo20.jpg",
+      "category": "Electrónica",
+      "price": 850,
+      "stock": 8,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Vestido de Verano",
+      "photo": "https://example.com/photo21.jpg",
+      "category": "Ropa",
+      "price": 55,
+      "stock": 20,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Abrigo de Invierno",
+      "photo": "https://example.com/photo22.jpg",
+      "category": "Ropa",
+      "price": 150,
+      "stock": 10,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Falda Plisada",
+      "photo": "https://example.com/photo23.jpg",
+      "category": "Ropa",
+      "price": 40,
+      "stock": 25,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Chaqueta de Punto",
+      "photo": "https://example.com/photo24.jpg",
+      "category": "Ropa",
+      "price": 65,
+      "stock": 15,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Bufanda de Lana",
+      "photo": "https://example.com/photo25.jpg",
+      "category": "Accesorios",
+      "price": 25,
+      "stock": 40,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Guantes de Cuero",
+      "photo": "https://example.com/photo26.jpg",
+      "category": "Accesorios",
+      "price": 45,
+      "stock": 30,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Mochila de Viaje",
+      "photo": "https://example.com/photo27.jpg",
+      "category": "Accesorios",
+      "price": 80,
+      "stock": 15,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Sombrero de Paja",
+      "photo": "https://example.com/photo28.jpg",
+      "category": "Accesorios",
+      "price": 30,
+      "stock": 25,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Zapatos Oxford",
+      "photo": "https://example.com/photo29.jpg",
+      "category": "Calzado",
+      "price": 90,
+      "stock": 20,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Zapatos de Tacón",
+      "photo": "https://example.com/photo30.jpg",
+      "category": "Calzado",
+      "price": 75,
+      "stock": 15,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Pantuflas de Casa",
+      "photo": "https://example.com/photo31.jpg",
+      "category": "Calzado",
+      "price": 25,
+      "stock": 50,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Botas de Lluvia",
+      "photo": "https://example.com/photo32.jpg",
+      "category": "Calzado",
+      "price": 60,
+      "stock": 25,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Camiseta Básica",
+      "photo": "https://example.com/photo33.jpg",
+      "category": "Ropa",
+      "price": 15,
+      "stock": 100,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Jersey de Lana",
+      "photo": "https://example.com/photo34.jpg",
+      "category": "Ropa",
+      "price": 55,
+      "stock": 30,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Vestido de Fiesta",
+      "photo": "https://example.com/photo35.jpg",
+      "category": "Ropa",
+      "price": 110,
+      "stock": 12,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Zapatos de Correr",
+      "photo": "https://example.com/photo36.jpg",
+      "category": "Calzado",
+      "price": 120,
+      "stock": 20,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Alpargatas",
+      "photo": "https://example.com/photo37.jpg",
+      "category": "Calzado",
+      "price": 40,
+      "stock": 25,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Sombrero de Fieltro",
+      "photo": "https://example.com/photo38.jpg",
+      "category": "Accesorios",
+      "price": 50,
+      "stock": 20,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Pañuelo de Seda",
+      "photo": "https://example.com/photo39.jpg",
+      "category": "Accesorios",
+      "price": 30,
+      "stock": 35,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    },
+    {
+      "title": "Audífonos Inalámbricos",
+      "photo": "https://example.com/photo40.jpg",
+      "category": "Electrónica",
+      "price": 150,
+      "stock": 40,
+      "user_id": "66d3ba3f990b36513dd860d8"
+    }
+  ]
+  

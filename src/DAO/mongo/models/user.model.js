@@ -4,8 +4,8 @@ const collection = "users";
 const schema = new Schema({
     email: { type: String, required: true, unique: true, index: true },
     password: { type: String, required: true },
-    role: { type: String, default: "user", index: true },
-    photo: { type: String, required: true },
+    role: { type: String, default: "USER", index: true },
+    photo: { type: String, required: false },
     age: { type: Number, required: false },
     name: { type: String, required: true },
     resetPasswordToken: { type: String },

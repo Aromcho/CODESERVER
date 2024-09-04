@@ -1,0 +1,18 @@
+.hero-list {
+    background-image: url('https://tustablas.com/img/cms/%C3%BAltimas-tendencias-en-sudaderas-de-skate-blog-skate-spain-sep-02.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 40vh;
+}
+.item-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .item-list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

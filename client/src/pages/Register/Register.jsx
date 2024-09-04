@@ -115,9 +115,9 @@ const Register = () => {
                     required
                   >
                     <option value="">Selecciona tu rol</option>
-                    <option value="admin">Admin</option>
-                    <option value="user">User</option>
-                    <option value="dev">Dev</option>
+                    <option value="ADMIN">ADMIN</option>
+                    <option value="USER">USER</option>
+                    <option value="PREM">PREM</option>
                   </Form.Select>
                 </Form.Group>
 
